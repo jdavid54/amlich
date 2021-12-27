@@ -145,13 +145,16 @@ TK22 = (
 CAN = ("Gi\341p", "\u1EA4t", "B\355nh", "\u0110inh", "M\u1EADu", "K\u1EF7", "Canh", "T\342n", "Nh\342m", "Qu\375");
 CHI = ("T\375", "S\u1EEDu", "D\u1EA7n", "M\343o", "Th\354n", "T\u1EF5", "Ng\u1ECD", "M\371i", "Th\342n", "D\u1EADu", "Tu\u1EA5t", "H\u1EE3i");
 TUAN = ("Ch\u1EE7 nh\u1EADt", "Th\u1EE9 hai", "Th\u1EE9 ba", "Th\u1EE9 t\u01B0", "Th\u1EE9 n\u0103m", "Th\u1EE9 s\341u", "Th\u1EE9 b\u1EA3y");
-THANG = ("Gi\u00EAng", "Hai", "Ba", "T\u01B0", "N\u0103m", "S\u00E1u", "B\u1EA3y", "T\u00E1m", "Ch\u00EDn", "M\u01B0\u1EDDi", "M\u1ED9t", "Ch\u1EA1p");
+THANG = ("Gi\u00EAng", "Hai", "Ba", "T\u01B0", "N\u0103m", "S\u00E1u", "B\u1EA3y", "T\u00E1m", "Ch\u00EDn", "M\u01B0\u1EDDi", "M\u01B0\u1EDDi m\u1ED9t", "Ch\u1EA1p");
+#THANG = ("Gi\u00EAng", "Hai", "Ba", "T\u01B0", "N\u0103m", "S\u00E1u", "B\u1EA3y", "T\u00E1m", "Ch\u00EDn", "M\u01B0\u1EDDi", "M\u1ED9t", "Ch\u1EA1p");
 GIO_HD = ("110100101100", "001101001011", "110011010010", "101100110100", "001011001101", "010010110011");
 TIETKHI = ("Xu\u00E2n ph\u00E2n", "Thanh minh", "C\u1ED1c v\u0169", "L\u1EADp h\u1EA1", "Ti\u1EC3u m\u00E3n", "Mang ch\u1EE7ng",
     "H\u1EA1 ch\u00ED", "Ti\u1EC3u th\u1EED", "\u0110\u1EA1i th\u1EED", "L\u1EADp thu", "X\u1EED th\u1EED", "B\u1EA1ch l\u1ED9",
     "Thu ph\u00E2n", "H\u00E0n l\u1ED9", "S\u01B0\u01A1ng gi\u00E1ng", "L\u1EADp \u0111\u00F4ng", "Ti\u1EC3u tuy\u1EBFt", "\u0110\u1EA1i tuy\u1EBFt",
     "\u0110\u00F4ng ch\u00ED", "Ti\u1EC3u h\u00E0n", "\u0110\u1EA1i h\u00E0n", "L\u1EADp xu\u00E2n", "V\u0169 Th\u1EE7y", "Kinh tr\u1EADp"
-);
+)
+
+weekday = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
 
 
 class YearlyEvent():
@@ -186,7 +189,7 @@ class LunarDate():
         return f'LunarDate(day={self.day}, month={self.month}, year={self.year}, leap={self.leap}, jd={self.jd})'
     def __str__(self):
         return f'{self.day}, {self.month}, {self.year}, {self.leap}, {self.jd}'
-    
+
 class Tk_data():
     '''
     structure TK : total 25 bits
@@ -198,17 +201,16 @@ class Tk_data():
     regularMonths = ['']*12
     
     def __init__(self, k):
-        self.offsetTet = k>>17  
+        self.offsetOfTet = k>>17  
         self.leapMonth = k & 0xf
-        self.leapMonthlenght = 30 if (k>>16 & 0x1) else 29
+        self.leapMonthLenght = 30 if (k>>16 & 0x1) else 29
         j = k >> 4;
         for i in range(12):                   
             self.regularMonths[12-i-1] = 30 if (j & 0x1) else 29;
             j >>= 1;
         #self.solarNY = jdn(1, 1, yy);
     def __repr__(self):
-        return f'Tk_data(offset Tet={self.offsetTet},\nleap month number={self.leapMonth},\nleap month lenght={self.leapMonthlenght},\nregular months lenght={self.regularMonths}), '
-
+        return f'Offset Tet={self.offsetOfTet},\nLeap month number={self.leapMonth},\nLeap month lenght={self.leapMonthLenght},\nRegular months lenght={self.regularMonths}'
 
 class OutputOptions():
     def __init__(self):

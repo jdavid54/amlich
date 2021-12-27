@@ -45,14 +45,13 @@ tronc =['jiǎ 甲', 'yǐ 乙', 'bǐng 丙', 'dīng 丁', 'wù 戊', 'jǐ 己', '
 
 # rameaux terrestres
 # Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi
-# ty', suu, dâ`n, meo, thi`n, ty, ngo, mui`, thân, dâu, tuât, hoi
 rameaux = ['zǐ 子', 'chǒu 丑', 'yín 寅', 'mǎo 卯', 'chén 辰', 'sì 巳',
            'wǔ 午', 'wèi 未', 'shēn 申', 'yǒu 酉', 'xū 戌', 'hài 亥']
 
 signes = ['Rat:shǔ鼠', 'Bœuf:niú 牛', 'Tigre:hǔ 虎', 'Lapin:tù 兔', 'Dragon:lóng 龍', 'Serpent:shé蛇',
           'Cheval:mǎ 馬', 'Mouton:yáng 羊','Singe:hóu 猴','Coq:jī 鷄','Chien:gǒu 狗', 'Porc:zhū 猪']
 
-start = 1954  # 1914: giap dan, 1954: Giap ngo, 1968: mau than
+start = 2000  # 1914: giap dan, 1954: Giap ngo, 1968: mau than
 
 dif = 2021 - start  # année courante
 # 2014 jiǎ 甲 Cheval : mǎ 馬
