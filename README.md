@@ -48,6 +48,9 @@ use : tk = Tk_data(year)
     
 # example 2025
 
+A leap month is a month that not include a major solar term. Here the lunar month after lunar month 6 6 has no major term because the major term Xử thử is part of the next lunar mont as it happens the same day as the next new moon on 23/08.
+
+
 |2025|New moons datetime  | Terms datetime | Principal terms | Maj/Min  | Lunar month |
 | :-------------- | :------------ | :-------------: | -------------: | :------------ | :-------------: |
 |0  |                   |    05/01 09:32     |   Tiểu hàn | Min    |   12/2024   |
