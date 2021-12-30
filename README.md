@@ -26,7 +26,11 @@ Two classes : Tk_data, LunarDate
 
 Tk_data gives the code for the year from TK tables defined in amlich_data.py
 
-use : tk = Tk_dat(year)
+* Class variables : regularMonths, allMonths (leap month lenght is negative), offsetOfTet (lunar new year day offset from 1st January), leapMonth, leapMonthLenght
+
+* Class methods : private allMonth()
+
+use : tk = Tk_data(year)
 
 1) tk data : 25 bits
 
