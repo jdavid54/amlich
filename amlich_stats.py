@@ -4,6 +4,7 @@
 import pandas as pd
 
 df = pd.read_csv('/home/pi/Desktop/amlich/1800-99.csv')
+#df.fillna('', inplace=True)
 
 # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html
 # args : pattern, number of splits, expand into columns if True
@@ -56,6 +57,7 @@ df2['NL'] = pd.to_datetime(df2['NL'], errors='coerce')
 df2['Terms']=df2['Date'].astype(str)+' '+ df2['Time'].astype(str)
 df2['Terms'] = pd.to_datetime(df2['Terms'], errors='coerce')
 
+
 #print(df2.loc[:,['NL_Date','NL_Time','NL']])
 
 df3 = df2.copy()
@@ -73,34 +75,53 @@ print('Nouvelles lunes\n',df5.head())
 
 
 dongchi =  df3[df3['Tiết khí']=='Đông chí'].index
+eleven =[]
 for m in dongchi:
     print(df3.loc[m,'NL_Date'])
     if pd.notna(df3.loc[m,'NL_Date']): #Ngày giờ Sóc
         if df3.loc[m,'NL_Date'].month == df3.loc[m,'Date'].month:
-            eleven = m
+            eleven.append(m)
             print(eleven,df3.loc[eleven,['NL_Date','Tiết khí']])
             print()
     else:
-        eleven = m-1
+        eleven.append(m-1)
         print(eleven,df3.loc[eleven,['NL_Date','Tiết khí']])
         print(m)
         print(df3.loc[m,['NL_Date','Tiết khí']])
         print()
 
+print(eleven)
+#input()
 for k in range(1,len(df3)-1):    
     isMaj = df3.loc[k, 'type']=='Maj'
-    isSameDay = df3.loc[k,'Day']==df3.loc[k+1,'NL_Day']
+    isSameDay = df3.loc[k,'Day'] == df3.loc[k+1,'NL_Day']
     if isMaj and isSameDay: # maj même jour que la nouvelle lune
-        print('Mois bis ?', df3.loc[k,'Terms'],df3.loc[k-1, 'NL'])
+        print(df3.loc[k,'Day'], df3.loc[k+1,'NL_Day'])
+        print('Egalité ?', df3.loc[k,'Terms'],df3.loc[k+1, 'NL'])
         print('mois bis :',df3.loc[k-1,'NL'])
-        i = k-1    
+        leap = k-1    
 
-df2['month'] =  df2.NL.dt.month
-df2.loc[df2['month']==0,'month']=12
-print(df2.loc[i])
-df2.loc[i:,'month']-=1
+print('leap',leap)
+month_serie = [0]*len(df3)
+#for m in range(eleven[0]):
+for n in range(0,eleven[0]+4,2):
+    month_serie[n]=n//2
 
+for n in range(0, eleven[1]-eleven[0]-2,2):
+    month_serie[eleven[0]+4+n]=(n//2)+1
+    
+for l in range(leap, eleven[1],2):
+    month_serie[l] -=1
+    
+df2['month'] =  month_serie
+df2.loc[df2['month']==0,'month']= 0
+print(df2.loc[leap])
+df2.loc[leap:,'month']-=1
+
+df2.fillna('', inplace=True)
 print(df2[['NL','Terms','Tiết khí','month','type']])
 print(df2.columns)
 
-
+# replace NaN, NaT
+df2.fillna('', inplace=True)
+df2.replace({pd.NaT: ''}, inplace=True)

@@ -198,9 +198,11 @@ class Tk_data():
     12 bits = regularMonthsLenght (0=29, 1=30)
     4 bits = leapMonth number
     '''
-    regularMonths = ['']*12
+    #regularMonths = ['']*12
     
     def __init__(self, k):
+        self.regularMonths = ['']*12
+        self.allMonths = []  
         self.offsetOfTet = k>>17  
         self.leapMonth = k & 0xf
         self.leapMonthLenght = 30 if (k>>16 & 0x1) else 29
@@ -209,9 +211,21 @@ class Tk_data():
             self.regularMonths[12-i-1] = 30 if (j & 0x1) else 29;
             j >>= 1;
         #self.solarNY = jdn(1, 1, yy);
+        self.__allMonth()
+        
     def __repr__(self):
-        return f'Offset Tet={self.offsetOfTet},\nLeap month number={self.leapMonth},\nLeap month lenght={self.leapMonthLenght},\nRegular months lenght={self.regularMonths}'
+        return f'Offset Tet = {self.offsetOfTet},\n\
+Leap month number and lenght = {self.leapMonth}, {self.leapMonthLenght},\n\
+Regular months lenght = {self.regularMonths}\n\
+All months = {self.allMonths}'
 
+    def __allMonth(self): # add leap month with negative lenght
+        #print("Private method")
+        for i,m in enumerate(self.regularMonths):
+            self.allMonths.append(m)
+            if i+1 == self.leapMonth:
+                self.allMonths.append(-self.leapMonthLenght)
+                
 class OutputOptions():
     def __init__(self):
         self.fontSize = "13pt";

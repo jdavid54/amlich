@@ -64,7 +64,8 @@ def decode_TK(k):  # better use class Tk_data(k)
     print(bin(k>>4 & 0xfff))
     '''
     tk = Tk_data(k)
-    print('Decode tk data',tk)
+    #print(tk)
+    return tk
 
 def decodeLunarYear(yy, k):  # return list of LunarDate for each month in the year
     # k = yearCode() from Tk tables  -- called by getYearInfo(yyyy)
@@ -102,8 +103,15 @@ offset=0
 code = getYearCode(yy)
 print(code)
 
-decode_TK(code)
+tk=decode_TK(code)
 
+# get class variables values
+# for var in dir(tk)[-4:]:
+for variable, value in vars(tk).items():
+    if variable[:1] != '_':
+        #print(getattr(tk,variable))
+        print(variable, value) 
+    
 ly =decodeLunarYear(yy, code)
 print(ly)
 
@@ -111,6 +119,50 @@ from amlich_functions import jdn2date
 monthlenght = len(ly)
 print(monthlenght)
 for k in range(monthlenght):    
-    print(ly[k].jd,jdn2date(ly[k].jd), k+1-ly[k].leap-offset, 'nhuan' if ly[k].leap else '')
+    print(ly[k].jd, jdn2date(ly[k].jd), k+1-ly[k].leap-offset, 'nhuan' if ly[k].leap else '')
     offset += ly[k].leap
 
+print('\nYear,\tTet,\t\tregularMonthLenght,allMonths,OffsetTet,LeapMonth,LeapMonthlenght')
+for y in range(2021,2051):
+    print(y, end=' : ')
+    code = getYearCode(y)
+    ly =decodeLunarYear(y, code)
+    print(jdn2date(ly[0].jd),end=',\t')
+    tk = decode_TK(code)
+    for variable, value in vars(tk).items():
+        if variable[:1] != '_':
+            print(getattr(tk,variable),end=',')
+            #print(variable, value) 
+    print()
+
+y = 2033
+code = getYearCode(y)
+ly =decodeLunarYear(y, code)
+print(ly)
+tk = decode_TK(code)
+print(tk)
+leap = tk.leapMonth
+lenght = tk.leapMonthLenght
+
+i = 1
+o = 0
+for l in ly:
+    jd = l.jd
+    print((i-o),'T' if i-1==leap else '',jdn2date(l.jd))
+    if i == leap: o = 1
+    i += 1
+
+# add in tk class
+# all_months = []  # add leap month with negative lenght
+# 
+# for i,m in enumerate(tk.regularMonths):
+#     all_months.append(m)
+#     if i+1==leap: all_months.append(-lenght)
+# 
+# print(all_months)
+print(tk.allMonths)
+
+# call privta method of Tk_data class
+# tk is Tk_data instance
+# don't forget all the _
+tk._Tk_data__allMonth()
