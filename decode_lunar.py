@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 # include from files
 from amlich_data import *
@@ -122,8 +124,9 @@ for k in range(monthlenght):
     print(ly[k].jd, jdn2date(ly[k].jd), k+1-ly[k].leap-offset, 'nhuan' if ly[k].leap else '')
     offset += ly[k].leap
 
+start = 2021
 print('\nYear,\tTet,\t\tregularMonthLenght,allMonths,OffsetTet,LeapMonth,LeapMonthlenght')
-for y in range(2021,2051):
+for y in range(start, start+20):
     print(y, end=' : ')
     code = getYearCode(y)
     ly =decodeLunarYear(y, code)
@@ -135,13 +138,14 @@ for y in range(2021,2051):
             #print(variable, value) 
     print()
 
-y = 2033
+y = 2023
 code = getYearCode(y)
 ly =decodeLunarYear(y, code)
 print(ly)
 tk = decode_TK(code)
 print(tk)
 leap = tk.leapMonth
+if leap==0: print('no leap month')
 lenght = tk.leapMonthLenght
 
 i = 1
@@ -160,7 +164,7 @@ for l in ly:
 #     if i+1==leap: all_months.append(-lenght)
 # 
 # print(all_months)
-print(tk.allMonths)
+print(tk.allMonths, len(tk.allMonths))
 
 # call privta method of Tk_data class
 # tk is Tk_data instance

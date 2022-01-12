@@ -1,7 +1,10 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from amlich_functions import  *
 
 # julian day
-dd, mm, yy = 26, 12, 2021
+dd, mm, yy = 8, 1, 2022
 # julian day
 jd = jdn(dd, mm, yy)
 print(jd)
@@ -25,7 +28,7 @@ print(getSolarTerm(jd, 1))
 
 
 # function get_YearInfo()
-yy =2022
+yy = 2025
 offset=0
 # decode lunar year : get the julian day of the beginning of each lunar month and leap status
 ly = getYearInfo(yy)   # decodeLunarYear(yy, getYearCode(yy))
@@ -43,7 +46,7 @@ print()
 mm = 7 # 6th leap month for 2025
 print('leap :',lunar_month(mm, yy))
 
-
+# csv created from 1800-99.ods (tab 2025)
 import pandas as pd
 df = pd.read_csv('/home/pi/Desktop/amlich/2025.csv')
 df.fillna('', inplace=True)
