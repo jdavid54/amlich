@@ -3,26 +3,34 @@
 
 from amlich_functions import  *
 
-# julian day
-dd, mm, yy = 8, 1, 2022
-# julian day
-jd = jdn(dd, mm, yy)
-print(jd)
-# inverse
-date = jdn2date(jd)
-print(date)
+def show_data():
+    print('CAN:',CAN)
+    print('CHI:',CHI)
+    print('TUAN:',TUAN)
+    print('THANG:',THANG)
 
-print(getLunarDate(dd, mm, yy))
+def date_info():
+    # julian day
+    dd, mm, yy = 12, 1, 2022
+    # julian day
+    jd = jdn(dd, mm, yy)
+    print(dd,mm,yy,'Julian date:',jd)
+    # inverse
+    date = jdn2date(jd)
+    print('Reverse date:',date)
 
-print(getYearCode(yy))  # from TK tables
-print(getYearInfo(yy))
+    print('Lunar date:',getLunarDate(dd, mm, yy))
 
-ly = decodeLunarYear(yy, getYearCode(yy))
-print(findLunarDate(jd, ly))
+    print('Year code :',getYearCode(yy))  # from TK tables
+    print('Year info :',getYearInfo(yy))
 
-# solar data
-print(SunLongitude(jd))
-print(getSolarTerm(jd, 1))
+    ly = decodeLunarYear(yy, getYearCode(yy))
+    print('Find lunar date :',findLunarDate(jd, ly))
+
+    # solar data
+    print('Longitude Soleil :',SunLongitude(jd))
+    solar_term = getSolarTerm(jd, 1)
+    print('Solar term :',solar_term, TIETKHI[solar_term])
 
 #today_info()
 
