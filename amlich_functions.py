@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 '''
 ['ABOUT', 'CAN', 'CHI', 'DAYNAMES', 'FONT_SIZES', 'GIO_HD', 'LunarDate', 'OutputOptions', 'PI', 'PRINT_OPTS',
 'SunLongitude', 'TAB_WIDTHS', 'THANG', 'TIETKHI', 'TK13', 'TK14', 'TK15', 'TK16', 'TK17', 'TK18', 'TK19', 'TK20',
@@ -255,7 +258,7 @@ def getYearCode(yyyy):
     if debug: print(hex(yearCode))
     return yearCode
 
-def getYearInfo(yyyy):
+def getYearInfo(yyyy):  # same as decodeLunarYear(yy, k) using only year variable
     return decodeLunarYear(yyyy, getYearCode(yyyy));  
 
 def getLunarDate(dd, mm, yyyy):

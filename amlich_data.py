@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 #TIETKHI :
 #Xuân phân (Equinoxe Printemps), Thanh minh, Cốc vũ, Lập hạ, Tiểu mãn, Mang chủng,
 #Hạ chí (Solstice Eté), Tiểu thử, Đại thử, Lập thu, Xử thử, Bạch lộ,
@@ -156,7 +159,14 @@ TIETKHI = ("Xu\u00E2n ph\u00E2n", "Thanh minh", "C\u1ED1c v\u0169", "L\u1EADp h\
 
 weekday = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
 
-
+def show_data():
+    print('CAN:',CAN)
+    print('CHI:',CHI)
+    print('TUAN:',TUAN)
+    print('GIO_HD:',GIO_HD)
+    print('THANG:',THANG)
+    print('YEARLY_EVENTS:',YEARLY_EVENTS)
+    
 class YearlyEvent():
     def __init__(self, dd, mm, info):
         self.day = dd
