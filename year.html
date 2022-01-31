@@ -1,0 +1,643 @@
+<style type="text/css">
+<!--  .mois {padding-right : 10px;padding-left : 10px;}
+  .tennam {text-align:center; font-size:150%; line-height:120%; font-weight:bold; color:#000000; background-color: #CCCCCC}
+  .thang {font-size: 9pt; padding:1; line-height:100%; font-family:Tahoma,Verdana,Arial; table-layout:fixed}
+  .tenthang {text-align:center; font-size:125%; line-height:100%; font-weight:bold; color:#330033; background-color: #CCFFCC}
+  .navi-l {text-align:center; font-size:75%; line-height:100%; font-family:Verdana,Times New Roman,Arial; font-weight:bold; color:red; background-color: #CCFFCC}
+  .navi-r {text-align:center; font-size:75%; line-height:100%; font-family:Verdana,Arial,Times New Roman; font-weight:bold; color:#330033; background-color: #CCFFCC}
+  .ngaytuan {width:14%; text-align:center; font-size:125%; line-height:100%; color:#330033; background-color: #FFFFCC}
+  .ngaythang {background-color:#FDFDF0}
+  .homnay {background-color:#FFF000}
+  .tet {background-color:#FFCC99}
+  .am {text-align:right;font-size:75%;line-height:100%;color:blue}
+  .am2:text-align:right;font-size:75%;line-height:100%;color:#004080}
+  .t2t6 {text-align:left;font-size:125%;color:black}
+  .t7 {text-align:left;font-size:125%;line-height:100%;color:green}
+  .cn {text-align:left;font-size:125%;line-height:100%;color:red}
+-->
+</style>
+<table align=center><tr><td colspan=4 class="tennam" onClick="showYearSelect();">N&#x103;m Tân Sửu 2021</td></tr><tr><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">1/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Kỷ Dậu, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(19,11,2020,0,2459216,1,1,2021);" <div style=color:black class="t2t6">1</div> <div class="am">19/11</div></td>
+<td class="ngaythang" title="Ngày Canh Tuất, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(20,11,2020,0,2459217,2,1,2021);" <div style=color:green class="t7">2</div> <div class="am">20</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Tân Hợi, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(21,11,2020,0,2459218,3,1,2021);" <div style=color:red class="cn">3</div> <div class="am">21</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tý, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(22,11,2020,0,2459219,4,1,2021);" <div style=color:black class="t2t6">4</div> <div class="am">22</div></td>
+<td class="ngaythang" title="Ngày Quý Sửu, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(23,11,2020,0,2459220,5,1,2021);" <div style=color:black class="t2t6">5</div> <div class="am">23</div></td>
+<td class="ngaythang" title="Ngày Giáp Dần, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(24,11,2020,0,2459221,6,1,2021);" <div style=color:black class="t2t6">6</div> <div class="am">24</div></td>
+<td class="ngaythang" title="Ngày Ất Mão, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(25,11,2020,0,2459222,7,1,2021);" <div style=color:black class="t2t6">7</div> <div class="am">25</div></td>
+<td class="ngaythang" title="Ngày Bính Thìn, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(26,11,2020,0,2459223,8,1,2021);" <div style=color:black class="t2t6">8</div> <div class="am">26</div></td>
+<td class="ngaythang" title="Ngày Đinh Tỵ, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(27,11,2020,0,2459224,9,1,2021);" <div style=color:green class="t7">9</div> <div class="am">27</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Mậu Ngọ, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(28,11,2020,0,2459225,10,1,2021);" <div style=color:red class="cn">10</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Kỷ Mùi, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(29,11,2020,0,2459226,11,1,2021);" <div style=color:black class="t2t6">11</div> <div class="am">29</div></td>
+<td class="ngaythang" title="Ngày Canh Thân, tháng Mậu Tý, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(30,11,2020,0,2459227,12,1,2021);" <div style=color:black class="t2t6">12</div> <div class="am">30</div></td>
+<td class="ngaythang" title="Ngày Tân Dậu, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(1,12,2020,0,2459228,13,1,2021);" <div style=color:black class="t2t6">13</div> <div class="am">1/12</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tuất, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(2,12,2020,0,2459229,14,1,2021);" <div style=color:black class="t2t6">14</div> <div class="am">2</div></td>
+<td class="ngaythang" title="Ngày Quý Hợi, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(3,12,2020,0,2459230,15,1,2021);" <div style=color:black class="t2t6">15</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Giáp Tý, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(4,12,2020,0,2459231,16,1,2021);" <div style=color:green class="t7">16</div> <div class="am">4</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Ất Sửu, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(5,12,2020,0,2459232,17,1,2021);" <div style=color:red class="cn">17</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Bính Dần, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(6,12,2020,0,2459233,18,1,2021);" <div style=color:black class="t2t6">18</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Đinh Mão, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(7,12,2020,0,2459234,19,1,2021);" <div style=color:black class="t2t6">19</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Mậu Thìn, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(8,12,2020,0,2459235,20,1,2021);" <div style=color:black class="t2t6">20</div> <div class="am">8</div></td>
+<td class="ngaythang" title="Ngày Kỷ Tỵ, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(9,12,2020,0,2459236,21,1,2021);" <div style=color:black class="t2t6">21</div> <div class="am">9</div></td>
+<td class="ngaythang" title="Ngày Canh Ngọ, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(10,12,2020,0,2459237,22,1,2021);" <div style=color:black class="t2t6">22</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Tân Mùi, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(11,12,2020,0,2459238,23,1,2021);" <div style=color:green class="t7">23</div> <div class="am">11</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Nhâm Thân, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(12,12,2020,0,2459239,24,1,2021);" <div style=color:red class="cn">24</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Quý Dậu, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(13,12,2020,0,2459240,25,1,2021);" <div style=color:black class="t2t6">25</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Giáp Tuất, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(14,12,2020,0,2459241,26,1,2021);" <div style=color:black class="t2t6">26</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Ất Hợi, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(15,12,2020,0,2459242,27,1,2021);" <div style=color:black class="t2t6">27</div> <div class="am">15</div></td>
+<td class="ngaythang" title="Ngày Bính Tý, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(16,12,2020,0,2459243,28,1,2021);" <div style=color:black class="t2t6">28</div> <div class="am">16</div></td>
+<td class="ngaythang" title="Ngày Đinh Sửu, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(17,12,2020,0,2459244,29,1,2021);" <div style=color:black class="t2t6">29</div> <div class="am">17</div></td>
+<td class="ngaythang" title="Ngày Mậu Dần, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(18,12,2020,0,2459245,30,1,2021);" <div style=color:green class="t7">30</div> <div class="am">18</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Kỷ Mão, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(19,12,2020,0,2459246,31,1,2021);" <div style=color:red class="cn">31</div> <div class="am">19</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">2/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Canh Thìn, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(20,12,2020,0,2459247,1,2,2021);" <div style=color:black class="t2t6">1</div> <div class="am">20/12</div></td>
+<td class="ngaythang" title="Ngày Tân Tỵ, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(21,12,2020,0,2459248,2,2,2021);" <div style=color:black class="t2t6">2</div> <div class="am">21</div></td>
+<td class="ngaythang" title="Ngày Nhâm Ngọ, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(22,12,2020,0,2459249,3,2,2021);" <div style=color:black class="t2t6">3</div> <div class="am">22</div></td>
+<td class="ngaythang" title="Ngày Quý Mùi, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(23,12,2020,0,2459250,4,2,2021);" <div style=color:black class="t2t6">4</div> <div class="am">23</div></td>
+<td class="ngaythang" title="Ngày Giáp Thân, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(24,12,2020,0,2459251,5,2,2021);" <div style=color:black class="t2t6">5</div> <div class="am">24</div></td>
+<td class="ngaythang" title="Ngày Ất Dậu, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(25,12,2020,0,2459252,6,2,2021);" <div style=color:green class="t7">6</div> <div class="am">25</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Bính Tuất, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(26,12,2020,0,2459253,7,2,2021);" <div style=color:red class="cn">7</div> <div class="am">26</div></td>
+<td class="ngaythang" title="Ngày Đinh Hợi, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(27,12,2020,0,2459254,8,2,2021);" <div style=color:black class="t2t6">8</div> <div class="am">27</div></td>
+<td class="ngaythang" title="Ngày Mậu Tý, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(28,12,2020,0,2459255,9,2,2021);" <div style=color:black class="t2t6">9</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Kỷ Sửu, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(29,12,2020,0,2459256,10,2,2021);" <div style=color:black class="t2t6">10</div> <div class="am">29</div></td>
+<td class="ngaythang" title="Ngày Canh Dần, tháng Kỷ Sửu, năm Canh Tý, Tiết: Đông chí" onClick="alertDayInfo(30,12,2020,0,2459257,11,2,2021);" <div style=color:black class="t2t6">11</div> <div class="am">30</div></td>
+<td class="tet" title="Ngày Tân Mão, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,1,2021,0,2459258,12,2,2021);" <div style=color:black class="t2t6">12</div> <div class="am">1/1</div></td>
+<td class="ngaythang" title="Ngày Nhâm Thìn, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,1,2021,0,2459259,13,2,2021);" <div style=color:green class="t7">13</div> <div class="am">2</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Quý Tỵ, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,1,2021,0,2459260,14,2,2021);" <div style=color:red class="cn">14</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Giáp Ngọ, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,1,2021,0,2459261,15,2,2021);" <div style=color:black class="t2t6">15</div> <div class="am">4</div></td>
+<td class="ngaythang" title="Ngày Ất Mùi, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,1,2021,0,2459262,16,2,2021);" <div style=color:black class="t2t6">16</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Bính Thân, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,1,2021,0,2459263,17,2,2021);" <div style=color:black class="t2t6">17</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Đinh Dậu, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,1,2021,0,2459264,18,2,2021);" <div style=color:black class="t2t6">18</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Mậu Tuất, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,1,2021,0,2459265,19,2,2021);" <div style=color:black class="t2t6">19</div> <div class="am">8</div></td>
+<td class="ngaythang" title="Ngày Kỷ Hợi, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,1,2021,0,2459266,20,2,2021);" <div style=color:green class="t7">20</div> <div class="am">9</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Canh Tý, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,1,2021,0,2459267,21,2,2021);" <div style=color:red class="cn">21</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Tân Sửu, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,1,2021,0,2459268,22,2,2021);" <div style=color:black class="t2t6">22</div> <div class="am">11</div></td>
+<td class="ngaythang" title="Ngày Nhâm Dần, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,1,2021,0,2459269,23,2,2021);" <div style=color:black class="t2t6">23</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Quý Mão, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,1,2021,0,2459270,24,2,2021);" <div style=color:black class="t2t6">24</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Giáp Thìn, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,1,2021,0,2459271,25,2,2021);" <div style=color:black class="t2t6">25</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Ất Tỵ, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,1,2021,0,2459272,26,2,2021);" <div style=color:black class="t2t6">26</div> <div class="am">15</div></td>
+<td class="ngaythang" title="Ngày Bính Ngọ, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,1,2021,0,2459273,27,2,2021);" <div style=color:green class="t7">27</div> <div class="am">16</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Đinh Mùi, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,1,2021,0,2459274,28,2,2021);" <div style=color:red class="cn">28</div> <div class="am">17</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+<tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">3/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Mậu Thân, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,1,2021,0,2459275,1,3,2021);" <div style=color:black class="t2t6">1</div> <div class="am">18/1</div></td>
+<td class="ngaythang" title="Ngày Kỷ Dậu, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,1,2021,0,2459276,2,3,2021);" <div style=color:black class="t2t6">2</div> <div class="am">19</div></td>
+<td class="ngaythang" title="Ngày Canh Tuất, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,1,2021,0,2459277,3,3,2021);" <div style=color:black class="t2t6">3</div> <div class="am">20</div></td>
+<td class="ngaythang" title="Ngày Tân Hợi, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,1,2021,0,2459278,4,3,2021);" <div style=color:black class="t2t6">4</div> <div class="am">21</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tý, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,1,2021,0,2459279,5,3,2021);" <div style=color:black class="t2t6">5</div> <div class="am">22</div></td>
+<td class="ngaythang" title="Ngày Quý Sửu, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,1,2021,0,2459280,6,3,2021);" <div style=color:green class="t7">6</div> <div class="am">23</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Giáp Dần, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,1,2021,0,2459281,7,3,2021);" <div style=color:red class="cn">7</div> <div class="am">24</div></td>
+<td class="ngaythang" title="Ngày Ất Mão, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,1,2021,0,2459282,8,3,2021);" <div style=color:black class="t2t6">8</div> <div class="am">25</div></td>
+<td class="ngaythang" title="Ngày Bính Thìn, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,1,2021,0,2459283,9,3,2021);" <div style=color:black class="t2t6">9</div> <div class="am">26</div></td>
+<td class="ngaythang" title="Ngày Đinh Tỵ, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,1,2021,0,2459284,10,3,2021);" <div style=color:black class="t2t6">10</div> <div class="am">27</div></td>
+<td class="ngaythang" title="Ngày Mậu Ngọ, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,1,2021,0,2459285,11,3,2021);" <div style=color:black class="t2t6">11</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Kỷ Mùi, tháng Canh Dần, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(29,1,2021,0,2459286,12,3,2021);" <div style=color:black class="t2t6">12</div> <div class="am">29</div></td>
+<td class="ngaythang" title="Ngày Canh Thân, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,2,2021,0,2459287,13,3,2021);" <div style=color:green class="t7">13</div> <div class="am">1/2</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Tân Dậu, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,2,2021,0,2459288,14,3,2021);" <div style=color:red class="cn">14</div> <div class="am">2</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tuất, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,2,2021,0,2459289,15,3,2021);" <div style=color:black class="t2t6">15</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Quý Hợi, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,2,2021,0,2459290,16,3,2021);" <div style=color:black class="t2t6">16</div> <div class="am">4</div></td>
+<td class="ngaythang" title="Ngày Giáp Tý, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,2,2021,0,2459291,17,3,2021);" <div style=color:black class="t2t6">17</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Ất Sửu, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,2,2021,0,2459292,18,3,2021);" <div style=color:black class="t2t6">18</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Bính Dần, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,2,2021,0,2459293,19,3,2021);" <div style=color:black class="t2t6">19</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Đinh Mão, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,2,2021,0,2459294,20,3,2021);" <div style=color:green class="t7">20</div> <div class="am">8</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Mậu Thìn, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,2,2021,0,2459295,21,3,2021);" <div style=color:red class="cn">21</div> <div class="am">9</div></td>
+<td class="ngaythang" title="Ngày Kỷ Tỵ, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,2,2021,0,2459296,22,3,2021);" <div style=color:black class="t2t6">22</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Canh Ngọ, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,2,2021,0,2459297,23,3,2021);" <div style=color:black class="t2t6">23</div> <div class="am">11</div></td>
+<td class="ngaythang" title="Ngày Tân Mùi, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,2,2021,0,2459298,24,3,2021);" <div style=color:black class="t2t6">24</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Nhâm Thân, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,2,2021,0,2459299,25,3,2021);" <div style=color:black class="t2t6">25</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Quý Dậu, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,2,2021,0,2459300,26,3,2021);" <div style=color:black class="t2t6">26</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Giáp Tuất, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,2,2021,0,2459301,27,3,2021);" <div style=color:green class="t7">27</div> <div class="am">15</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Ất Hợi, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,2,2021,0,2459302,28,3,2021);" <div style=color:red class="cn">28</div> <div class="am">16</div></td>
+<td class="ngaythang" title="Ngày Bính Tý, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,2,2021,0,2459303,29,3,2021);" <div style=color:black class="t2t6">29</div> <div class="am">17</div></td>
+<td class="ngaythang" title="Ngày Đinh Sửu, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,2,2021,0,2459304,30,3,2021);" <div style=color:black class="t2t6">30</div> <div class="am">18</div></td>
+<td class="ngaythang" title="Ngày Mậu Dần, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,2,2021,0,2459305,31,3,2021);" <div style=color:black class="t2t6">31</div> <div class="am">19</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+<tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">4/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Kỷ Mão, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,2,2021,0,2459306,1,4,2021);" <div style=color:black class="t2t6">1</div> <div class="am">20/2</div></td>
+<td class="ngaythang" title="Ngày Canh Thìn, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,2,2021,0,2459307,2,4,2021);" <div style=color:black class="t2t6">2</div> <div class="am">21</div></td>
+<td class="ngaythang" title="Ngày Tân Tỵ, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,2,2021,0,2459308,3,4,2021);" <div style=color:green class="t7">3</div> <div class="am">22</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Nhâm Ngọ, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,2,2021,0,2459309,4,4,2021);" <div style=color:red class="cn">4</div> <div class="am">23</div></td>
+<td class="ngaythang" title="Ngày Quý Mùi, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,2,2021,0,2459310,5,4,2021);" <div style=color:black class="t2t6">5</div> <div class="am">24</div></td>
+<td class="ngaythang" title="Ngày Giáp Thân, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,2,2021,0,2459311,6,4,2021);" <div style=color:black class="t2t6">6</div> <div class="am">25</div></td>
+<td class="ngaythang" title="Ngày Ất Dậu, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,2,2021,0,2459312,7,4,2021);" <div style=color:black class="t2t6">7</div> <div class="am">26</div></td>
+<td class="ngaythang" title="Ngày Bính Tuất, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,2,2021,0,2459313,8,4,2021);" <div style=color:black class="t2t6">8</div> <div class="am">27</div></td>
+<td class="ngaythang" title="Ngày Đinh Hợi, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,2,2021,0,2459314,9,4,2021);" <div style=color:black class="t2t6">9</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Mậu Tý, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(29,2,2021,0,2459315,10,4,2021);" <div style=color:green class="t7">10</div> <div class="am">29</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Kỷ Sửu, tháng Tân Mão, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(30,2,2021,0,2459316,11,4,2021);" <div style=color:red class="cn">11</div> <div class="am">30</div></td>
+<td class="ngaythang" title="Ngày Canh Dần, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,3,2021,0,2459317,12,4,2021);" <div style=color:black class="t2t6">12</div> <div class="am">1/3</div></td>
+<td class="ngaythang" title="Ngày Tân Mão, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,3,2021,0,2459318,13,4,2021);" <div style=color:black class="t2t6">13</div> <div class="am">2</div></td>
+<td class="ngaythang" title="Ngày Nhâm Thìn, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,3,2021,0,2459319,14,4,2021);" <div style=color:black class="t2t6">14</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Quý Tỵ, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,3,2021,0,2459320,15,4,2021);" <div style=color:black class="t2t6">15</div> <div class="am">4</div></td>
+<td class="ngaythang" title="Ngày Giáp Ngọ, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,3,2021,0,2459321,16,4,2021);" <div style=color:black class="t2t6">16</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Ất Mùi, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,3,2021,0,2459322,17,4,2021);" <div style=color:green class="t7">17</div> <div class="am">6</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Bính Thân, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,3,2021,0,2459323,18,4,2021);" <div style=color:red class="cn">18</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Đinh Dậu, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,3,2021,0,2459324,19,4,2021);" <div style=color:black class="t2t6">19</div> <div class="am">8</div></td>
+<td class="ngaythang" title="Ngày Mậu Tuất, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,3,2021,0,2459325,20,4,2021);" <div style=color:black class="t2t6">20</div> <div class="am">9</div></td>
+<td class="ngaythang" title="Ngày Kỷ Hợi, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,3,2021,0,2459326,21,4,2021);" <div style=color:black class="t2t6">21</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Canh Tý, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,3,2021,0,2459327,22,4,2021);" <div style=color:black class="t2t6">22</div> <div class="am">11</div></td>
+<td class="ngaythang" title="Ngày Tân Sửu, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,3,2021,0,2459328,23,4,2021);" <div style=color:black class="t2t6">23</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Nhâm Dần, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,3,2021,0,2459329,24,4,2021);" <div style=color:green class="t7">24</div> <div class="am">13</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Quý Mão, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,3,2021,0,2459330,25,4,2021);" <div style=color:red class="cn">25</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Giáp Thìn, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,3,2021,0,2459331,26,4,2021);" <div style=color:black class="t2t6">26</div> <div class="am">15</div></td>
+<td class="ngaythang" title="Ngày Ất Tỵ, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,3,2021,0,2459332,27,4,2021);" <div style=color:black class="t2t6">27</div> <div class="am">16</div></td>
+<td class="ngaythang" title="Ngày Bính Ngọ, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,3,2021,0,2459333,28,4,2021);" <div style=color:black class="t2t6">28</div> <div class="am">17</div></td>
+<td class="ngaythang" title="Ngày Đinh Mùi, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,3,2021,0,2459334,29,4,2021);" <div style=color:black class="t2t6">29</div> <div class="am">18</div></td>
+<td class="ngaythang" title="Ngày Mậu Thân, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,3,2021,0,2459335,30,4,2021);" <div style=color:black class="t2t6">30</div> <div class="am">19</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+<tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td></tr><tr><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">5/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Kỷ Dậu, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,3,2021,0,2459336,1,5,2021);" <div style=color:green class="t7">1</div> <div class="am">20/3</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Canh Tuất, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,3,2021,0,2459337,2,5,2021);" <div style=color:red class="cn">2</div> <div class="am">21</div></td>
+<td class="ngaythang" title="Ngày Tân Hợi, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,3,2021,0,2459338,3,5,2021);" <div style=color:black class="t2t6">3</div> <div class="am">22</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tý, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,3,2021,0,2459339,4,5,2021);" <div style=color:black class="t2t6">4</div> <div class="am">23</div></td>
+<td class="ngaythang" title="Ngày Quý Sửu, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,3,2021,0,2459340,5,5,2021);" <div style=color:black class="t2t6">5</div> <div class="am">24</div></td>
+<td class="ngaythang" title="Ngày Giáp Dần, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,3,2021,0,2459341,6,5,2021);" <div style=color:black class="t2t6">6</div> <div class="am">25</div></td>
+<td class="ngaythang" title="Ngày Ất Mão, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,3,2021,0,2459342,7,5,2021);" <div style=color:black class="t2t6">7</div> <div class="am">26</div></td>
+<td class="ngaythang" title="Ngày Bính Thìn, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,3,2021,0,2459343,8,5,2021);" <div style=color:green class="t7">8</div> <div class="am">27</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Đinh Tỵ, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,3,2021,0,2459344,9,5,2021);" <div style=color:red class="cn">9</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Mậu Ngọ, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(29,3,2021,0,2459345,10,5,2021);" <div style=color:black class="t2t6">10</div> <div class="am">29</div></td>
+<td class="ngaythang" title="Ngày Kỷ Mùi, tháng Nhâm Thìn, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(30,3,2021,0,2459346,11,5,2021);" <div style=color:black class="t2t6">11</div> <div class="am">30</div></td>
+<td class="ngaythang" title="Ngày Canh Thân, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,4,2021,0,2459347,12,5,2021);" <div style=color:black class="t2t6">12</div> <div class="am">1/4</div></td>
+<td class="ngaythang" title="Ngày Tân Dậu, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,4,2021,0,2459348,13,5,2021);" <div style=color:black class="t2t6">13</div> <div class="am">2</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tuất, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,4,2021,0,2459349,14,5,2021);" <div style=color:black class="t2t6">14</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Quý Hợi, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,4,2021,0,2459350,15,5,2021);" <div style=color:green class="t7">15</div> <div class="am">4</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Giáp Tý, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,4,2021,0,2459351,16,5,2021);" <div style=color:red class="cn">16</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Ất Sửu, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,4,2021,0,2459352,17,5,2021);" <div style=color:black class="t2t6">17</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Bính Dần, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,4,2021,0,2459353,18,5,2021);" <div style=color:black class="t2t6">18</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Đinh Mão, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,4,2021,0,2459354,19,5,2021);" <div style=color:black class="t2t6">19</div> <div class="am">8</div></td>
+<td class="ngaythang" title="Ngày Mậu Thìn, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,4,2021,0,2459355,20,5,2021);" <div style=color:black class="t2t6">20</div> <div class="am">9</div></td>
+<td class="ngaythang" title="Ngày Kỷ Tỵ, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,4,2021,0,2459356,21,5,2021);" <div style=color:black class="t2t6">21</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Canh Ngọ, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,4,2021,0,2459357,22,5,2021);" <div style=color:green class="t7">22</div> <div class="am">11</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Tân Mùi, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,4,2021,0,2459358,23,5,2021);" <div style=color:red class="cn">23</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Nhâm Thân, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,4,2021,0,2459359,24,5,2021);" <div style=color:black class="t2t6">24</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Quý Dậu, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,4,2021,0,2459360,25,5,2021);" <div style=color:black class="t2t6">25</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Giáp Tuất, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,4,2021,0,2459361,26,5,2021);" <div style=color:black class="t2t6">26</div> <div class="am">15</div></td>
+<td class="ngaythang" title="Ngày Ất Hợi, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,4,2021,0,2459362,27,5,2021);" <div style=color:black class="t2t6">27</div> <div class="am">16</div></td>
+<td class="ngaythang" title="Ngày Bính Tý, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,4,2021,0,2459363,28,5,2021);" <div style=color:black class="t2t6">28</div> <div class="am">17</div></td>
+<td class="ngaythang" title="Ngày Đinh Sửu, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,4,2021,0,2459364,29,5,2021);" <div style=color:green class="t7">29</div> <div class="am">18</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Mậu Dần, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,4,2021,0,2459365,30,5,2021);" <div style=color:red class="cn">30</div> <div class="am">19</div></td>
+<td class="ngaythang" title="Ngày Kỷ Mão, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,4,2021,0,2459366,31,5,2021);" <div style=color:black class="t2t6">31</div> <div class="am">20</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">6/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Canh Thìn, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,4,2021,0,2459367,1,6,2021);" <div style=color:black class="t2t6">1</div> <div class="am">21/4</div></td>
+<td class="ngaythang" title="Ngày Tân Tỵ, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,4,2021,0,2459368,2,6,2021);" <div style=color:black class="t2t6">2</div> <div class="am">22</div></td>
+<td class="ngaythang" title="Ngày Nhâm Ngọ, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,4,2021,0,2459369,3,6,2021);" <div style=color:black class="t2t6">3</div> <div class="am">23</div></td>
+<td class="ngaythang" title="Ngày Quý Mùi, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,4,2021,0,2459370,4,6,2021);" <div style=color:black class="t2t6">4</div> <div class="am">24</div></td>
+<td class="ngaythang" title="Ngày Giáp Thân, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,4,2021,0,2459371,5,6,2021);" <div style=color:green class="t7">5</div> <div class="am">25</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Ất Dậu, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,4,2021,0,2459372,6,6,2021);" <div style=color:red class="cn">6</div> <div class="am">26</div></td>
+<td class="ngaythang" title="Ngày Bính Tuất, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,4,2021,0,2459373,7,6,2021);" <div style=color:black class="t2t6">7</div> <div class="am">27</div></td>
+<td class="ngaythang" title="Ngày Đinh Hợi, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,4,2021,0,2459374,8,6,2021);" <div style=color:black class="t2t6">8</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Mậu Tý, tháng Quý Tỵ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(29,4,2021,0,2459375,9,6,2021);" <div style=color:black class="t2t6">9</div> <div class="am">29</div></td>
+<td class="ngaythang" title="Ngày Kỷ Sửu, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,5,2021,0,2459376,10,6,2021);" <div style=color:black class="t2t6">10</div> <div class="am">1/5</div></td>
+<td class="ngaythang" title="Ngày Canh Dần, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,5,2021,0,2459377,11,6,2021);" <div style=color:black class="t2t6">11</div> <div class="am">2</div></td>
+<td class="ngaythang" title="Ngày Tân Mão, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,5,2021,0,2459378,12,6,2021);" <div style=color:green class="t7">12</div> <div class="am">3</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Nhâm Thìn, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,5,2021,0,2459379,13,6,2021);" <div style=color:red class="cn">13</div> <div class="am">4</div></td>
+<td class="ngaythang" title="Ngày Quý Tỵ, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,5,2021,0,2459380,14,6,2021);" <div style=color:black class="t2t6">14</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Giáp Ngọ, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,5,2021,0,2459381,15,6,2021);" <div style=color:black class="t2t6">15</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Ất Mùi, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,5,2021,0,2459382,16,6,2021);" <div style=color:black class="t2t6">16</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Bính Thân, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,5,2021,0,2459383,17,6,2021);" <div style=color:black class="t2t6">17</div> <div class="am">8</div></td>
+<td class="ngaythang" title="Ngày Đinh Dậu, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,5,2021,0,2459384,18,6,2021);" <div style=color:black class="t2t6">18</div> <div class="am">9</div></td>
+<td class="ngaythang" title="Ngày Mậu Tuất, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,5,2021,0,2459385,19,6,2021);" <div style=color:green class="t7">19</div> <div class="am">10</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Kỷ Hợi, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,5,2021,0,2459386,20,6,2021);" <div style=color:red class="cn">20</div> <div class="am">11</div></td>
+<td class="ngaythang" title="Ngày Canh Tý, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,5,2021,0,2459387,21,6,2021);" <div style=color:black class="t2t6">21</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Tân Sửu, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,5,2021,0,2459388,22,6,2021);" <div style=color:black class="t2t6">22</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Nhâm Dần, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,5,2021,0,2459389,23,6,2021);" <div style=color:black class="t2t6">23</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Quý Mão, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,5,2021,0,2459390,24,6,2021);" <div style=color:black class="t2t6">24</div> <div class="am">15</div></td>
+<td class="ngaythang" title="Ngày Giáp Thìn, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,5,2021,0,2459391,25,6,2021);" <div style=color:black class="t2t6">25</div> <div class="am">16</div></td>
+<td class="ngaythang" title="Ngày Ất Tỵ, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,5,2021,0,2459392,26,6,2021);" <div style=color:green class="t7">26</div> <div class="am">17</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Bính Ngọ, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,5,2021,0,2459393,27,6,2021);" <div style=color:red class="cn">27</div> <div class="am">18</div></td>
+<td class="ngaythang" title="Ngày Đinh Mùi, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,5,2021,0,2459394,28,6,2021);" <div style=color:black class="t2t6">28</div> <div class="am">19</div></td>
+<td class="ngaythang" title="Ngày Mậu Thân, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,5,2021,0,2459395,29,6,2021);" <div style=color:black class="t2t6">29</div> <div class="am">20</div></td>
+<td class="ngaythang" title="Ngày Kỷ Dậu, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,5,2021,0,2459396,30,6,2021);" <div style=color:black class="t2t6">30</div> <div class="am">21</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+<tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">7/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Canh Tuất, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,5,2021,0,2459397,1,7,2021);" <div style=color:black class="t2t6">1</div> <div class="am">22/5</div></td>
+<td class="ngaythang" title="Ngày Tân Hợi, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,5,2021,0,2459398,2,7,2021);" <div style=color:black class="t2t6">2</div> <div class="am">23</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tý, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,5,2021,0,2459399,3,7,2021);" <div style=color:green class="t7">3</div> <div class="am">24</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Quý Sửu, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,5,2021,0,2459400,4,7,2021);" <div style=color:red class="cn">4</div> <div class="am">25</div></td>
+<td class="ngaythang" title="Ngày Giáp Dần, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,5,2021,0,2459401,5,7,2021);" <div style=color:black class="t2t6">5</div> <div class="am">26</div></td>
+<td class="ngaythang" title="Ngày Ất Mão, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,5,2021,0,2459402,6,7,2021);" <div style=color:black class="t2t6">6</div> <div class="am">27</div></td>
+<td class="ngaythang" title="Ngày Bính Thìn, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,5,2021,0,2459403,7,7,2021);" <div style=color:black class="t2t6">7</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Đinh Tỵ, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(29,5,2021,0,2459404,8,7,2021);" <div style=color:black class="t2t6">8</div> <div class="am">29</div></td>
+<td class="ngaythang" title="Ngày Mậu Ngọ, tháng Giáp Ngọ, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(30,5,2021,0,2459405,9,7,2021);" <div style=color:black class="t2t6">9</div> <div class="am">30</div></td>
+<td class="ngaythang" title="Ngày Kỷ Mùi, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,6,2021,0,2459406,10,7,2021);" <div style=color:green class="t7">10</div> <div class="am">1/6</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Canh Thân, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,6,2021,0,2459407,11,7,2021);" <div style=color:red class="cn">11</div> <div class="am">2</div></td>
+<td class="ngaythang" title="Ngày Tân Dậu, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,6,2021,0,2459408,12,7,2021);" <div style=color:black class="t2t6">12</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tuất, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,6,2021,0,2459409,13,7,2021);" <div style=color:black class="t2t6">13</div> <div class="am">4</div></td>
+<td class="ngaythang" title="Ngày Quý Hợi, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,6,2021,0,2459410,14,7,2021);" <div style=color:black class="t2t6">14</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Giáp Tý, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,6,2021,0,2459411,15,7,2021);" <div style=color:black class="t2t6">15</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Ất Sửu, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,6,2021,0,2459412,16,7,2021);" <div style=color:black class="t2t6">16</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Bính Dần, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,6,2021,0,2459413,17,7,2021);" <div style=color:green class="t7">17</div> <div class="am">8</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Đinh Mão, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,6,2021,0,2459414,18,7,2021);" <div style=color:red class="cn">18</div> <div class="am">9</div></td>
+<td class="ngaythang" title="Ngày Mậu Thìn, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,6,2021,0,2459415,19,7,2021);" <div style=color:black class="t2t6">19</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Kỷ Tỵ, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,6,2021,0,2459416,20,7,2021);" <div style=color:black class="t2t6">20</div> <div class="am">11</div></td>
+<td class="ngaythang" title="Ngày Canh Ngọ, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,6,2021,0,2459417,21,7,2021);" <div style=color:black class="t2t6">21</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Tân Mùi, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,6,2021,0,2459418,22,7,2021);" <div style=color:black class="t2t6">22</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Nhâm Thân, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,6,2021,0,2459419,23,7,2021);" <div style=color:black class="t2t6">23</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Quý Dậu, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,6,2021,0,2459420,24,7,2021);" <div style=color:green class="t7">24</div> <div class="am">15</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Giáp Tuất, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,6,2021,0,2459421,25,7,2021);" <div style=color:red class="cn">25</div> <div class="am">16</div></td>
+<td class="ngaythang" title="Ngày Ất Hợi, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,6,2021,0,2459422,26,7,2021);" <div style=color:black class="t2t6">26</div> <div class="am">17</div></td>
+<td class="ngaythang" title="Ngày Bính Tý, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,6,2021,0,2459423,27,7,2021);" <div style=color:black class="t2t6">27</div> <div class="am">18</div></td>
+<td class="ngaythang" title="Ngày Đinh Sửu, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,6,2021,0,2459424,28,7,2021);" <div style=color:black class="t2t6">28</div> <div class="am">19</div></td>
+<td class="ngaythang" title="Ngày Mậu Dần, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,6,2021,0,2459425,29,7,2021);" <div style=color:black class="t2t6">29</div> <div class="am">20</div></td>
+<td class="ngaythang" title="Ngày Kỷ Mão, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,6,2021,0,2459426,30,7,2021);" <div style=color:black class="t2t6">30</div> <div class="am">21</div></td>
+<td class="ngaythang" title="Ngày Canh Thìn, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,6,2021,0,2459427,31,7,2021);" <div style=color:green class="t7">31</div> <div class="am">22</div></td>
+</tr>
+<tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">8/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class="ngaythang" title="Ngày Tân Tỵ, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,6,2021,0,2459428,1,8,2021);" <div style=color:red class="cn">1</div> <div class="am">23/6</div></td>
+<td class="ngaythang" title="Ngày Nhâm Ngọ, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,6,2021,0,2459429,2,8,2021);" <div style=color:black class="t2t6">2</div> <div class="am">24</div></td>
+<td class="ngaythang" title="Ngày Quý Mùi, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,6,2021,0,2459430,3,8,2021);" <div style=color:black class="t2t6">3</div> <div class="am">25</div></td>
+<td class="ngaythang" title="Ngày Giáp Thân, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,6,2021,0,2459431,4,8,2021);" <div style=color:black class="t2t6">4</div> <div class="am">26</div></td>
+<td class="ngaythang" title="Ngày Ất Dậu, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,6,2021,0,2459432,5,8,2021);" <div style=color:black class="t2t6">5</div> <div class="am">27</div></td>
+<td class="ngaythang" title="Ngày Bính Tuất, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,6,2021,0,2459433,6,8,2021);" <div style=color:black class="t2t6">6</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Đinh Hợi, tháng Ất Mùi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(29,6,2021,0,2459434,7,8,2021);" <div style=color:green class="t7">7</div> <div class="am">29</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Mậu Tý, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,7,2021,0,2459435,8,8,2021);" <div style=color:red class="cn">8</div> <div class="am">1/7</div></td>
+<td class="ngaythang" title="Ngày Kỷ Sửu, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,7,2021,0,2459436,9,8,2021);" <div style=color:black class="t2t6">9</div> <div class="am">2</div></td>
+<td class="ngaythang" title="Ngày Canh Dần, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,7,2021,0,2459437,10,8,2021);" <div style=color:black class="t2t6">10</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Tân Mão, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,7,2021,0,2459438,11,8,2021);" <div style=color:black class="t2t6">11</div> <div class="am">4</div></td>
+<td class="ngaythang" title="Ngày Nhâm Thìn, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,7,2021,0,2459439,12,8,2021);" <div style=color:black class="t2t6">12</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Quý Tỵ, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,7,2021,0,2459440,13,8,2021);" <div style=color:black class="t2t6">13</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Giáp Ngọ, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,7,2021,0,2459441,14,8,2021);" <div style=color:green class="t7">14</div> <div class="am">7</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Ất Mùi, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,7,2021,0,2459442,15,8,2021);" <div style=color:red class="cn">15</div> <div class="am">8</div></td>
+<td class="ngaythang" title="Ngày Bính Thân, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,7,2021,0,2459443,16,8,2021);" <div style=color:black class="t2t6">16</div> <div class="am">9</div></td>
+<td class="ngaythang" title="Ngày Đinh Dậu, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,7,2021,0,2459444,17,8,2021);" <div style=color:black class="t2t6">17</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Mậu Tuất, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,7,2021,0,2459445,18,8,2021);" <div style=color:black class="t2t6">18</div> <div class="am">11</div></td>
+<td class="ngaythang" title="Ngày Kỷ Hợi, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,7,2021,0,2459446,19,8,2021);" <div style=color:black class="t2t6">19</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Canh Tý, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,7,2021,0,2459447,20,8,2021);" <div style=color:black class="t2t6">20</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Tân Sửu, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,7,2021,0,2459448,21,8,2021);" <div style=color:green class="t7">21</div> <div class="am">14</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Nhâm Dần, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,7,2021,0,2459449,22,8,2021);" <div style=color:red class="cn">22</div> <div class="am">15</div></td>
+<td class="ngaythang" title="Ngày Quý Mão, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,7,2021,0,2459450,23,8,2021);" <div style=color:black class="t2t6">23</div> <div class="am">16</div></td>
+<td class="ngaythang" title="Ngày Giáp Thìn, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,7,2021,0,2459451,24,8,2021);" <div style=color:black class="t2t6">24</div> <div class="am">17</div></td>
+<td class="ngaythang" title="Ngày Ất Tỵ, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,7,2021,0,2459452,25,8,2021);" <div style=color:black class="t2t6">25</div> <div class="am">18</div></td>
+<td class="ngaythang" title="Ngày Bính Ngọ, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,7,2021,0,2459453,26,8,2021);" <div style=color:black class="t2t6">26</div> <div class="am">19</div></td>
+<td class="ngaythang" title="Ngày Đinh Mùi, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,7,2021,0,2459454,27,8,2021);" <div style=color:black class="t2t6">27</div> <div class="am">20</div></td>
+<td class="ngaythang" title="Ngày Mậu Thân, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,7,2021,0,2459455,28,8,2021);" <div style=color:green class="t7">28</div> <div class="am">21</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Kỷ Dậu, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,7,2021,0,2459456,29,8,2021);" <div style=color:red class="cn">29</div> <div class="am">22</div></td>
+<td class="ngaythang" title="Ngày Canh Tuất, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,7,2021,0,2459457,30,8,2021);" <div style=color:black class="t2t6">30</div> <div class="am">23</div></td>
+<td class="ngaythang" title="Ngày Tân Hợi, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,7,2021,0,2459458,31,8,2021);" <div style=color:black class="t2t6">31</div> <div class="am">24</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+<tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td></tr><tr><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">9/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tý, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,7,2021,0,2459459,1,9,2021);" <div style=color:black class="t2t6">1</div> <div class="am">25/7</div></td>
+<td class="ngaythang" title="Ngày Quý Sửu, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,7,2021,0,2459460,2,9,2021);" <div style=color:black class="t2t6">2</div> <div class="am">26</div></td>
+<td class="ngaythang" title="Ngày Giáp Dần, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,7,2021,0,2459461,3,9,2021);" <div style=color:black class="t2t6">3</div> <div class="am">27</div></td>
+<td class="ngaythang" title="Ngày Ất Mão, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,7,2021,0,2459462,4,9,2021);" <div style=color:green class="t7">4</div> <div class="am">28</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Bính Thìn, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(29,7,2021,0,2459463,5,9,2021);" <div style=color:red class="cn">5</div> <div class="am">29</div></td>
+<td class="ngaythang" title="Ngày Đinh Tỵ, tháng Bính Thân, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(30,7,2021,0,2459464,6,9,2021);" <div style=color:black class="t2t6">6</div> <div class="am">30</div></td>
+<td class="ngaythang" title="Ngày Mậu Ngọ, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,8,2021,0,2459465,7,9,2021);" <div style=color:black class="t2t6">7</div> <div class="am">1/8</div></td>
+<td class="ngaythang" title="Ngày Kỷ Mùi, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,8,2021,0,2459466,8,9,2021);" <div style=color:black class="t2t6">8</div> <div class="am">2</div></td>
+<td class="ngaythang" title="Ngày Canh Thân, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,8,2021,0,2459467,9,9,2021);" <div style=color:black class="t2t6">9</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Tân Dậu, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,8,2021,0,2459468,10,9,2021);" <div style=color:black class="t2t6">10</div> <div class="am">4</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tuất, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,8,2021,0,2459469,11,9,2021);" <div style=color:green class="t7">11</div> <div class="am">5</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Quý Hợi, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,8,2021,0,2459470,12,9,2021);" <div style=color:red class="cn">12</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Giáp Tý, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,8,2021,0,2459471,13,9,2021);" <div style=color:black class="t2t6">13</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Ất Sửu, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,8,2021,0,2459472,14,9,2021);" <div style=color:black class="t2t6">14</div> <div class="am">8</div></td>
+<td class="ngaythang" title="Ngày Bính Dần, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,8,2021,0,2459473,15,9,2021);" <div style=color:black class="t2t6">15</div> <div class="am">9</div></td>
+<td class="ngaythang" title="Ngày Đinh Mão, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,8,2021,0,2459474,16,9,2021);" <div style=color:black class="t2t6">16</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Mậu Thìn, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,8,2021,0,2459475,17,9,2021);" <div style=color:black class="t2t6">17</div> <div class="am">11</div></td>
+<td class="ngaythang" title="Ngày Kỷ Tỵ, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,8,2021,0,2459476,18,9,2021);" <div style=color:green class="t7">18</div> <div class="am">12</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Canh Ngọ, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,8,2021,0,2459477,19,9,2021);" <div style=color:red class="cn">19</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Tân Mùi, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,8,2021,0,2459478,20,9,2021);" <div style=color:black class="t2t6">20</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Nhâm Thân, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,8,2021,0,2459479,21,9,2021);" <div style=color:black class="t2t6">21</div> <div class="am">15</div></td>
+<td class="ngaythang" title="Ngày Quý Dậu, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,8,2021,0,2459480,22,9,2021);" <div style=color:black class="t2t6">22</div> <div class="am">16</div></td>
+<td class="ngaythang" title="Ngày Giáp Tuất, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,8,2021,0,2459481,23,9,2021);" <div style=color:black class="t2t6">23</div> <div class="am">17</div></td>
+<td class="ngaythang" title="Ngày Ất Hợi, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,8,2021,0,2459482,24,9,2021);" <div style=color:black class="t2t6">24</div> <div class="am">18</div></td>
+<td class="ngaythang" title="Ngày Bính Tý, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,8,2021,0,2459483,25,9,2021);" <div style=color:green class="t7">25</div> <div class="am">19</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Đinh Sửu, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,8,2021,0,2459484,26,9,2021);" <div style=color:red class="cn">26</div> <div class="am">20</div></td>
+<td class="ngaythang" title="Ngày Mậu Dần, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,8,2021,0,2459485,27,9,2021);" <div style=color:black class="t2t6">27</div> <div class="am">21</div></td>
+<td class="ngaythang" title="Ngày Kỷ Mão, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,8,2021,0,2459486,28,9,2021);" <div style=color:black class="t2t6">28</div> <div class="am">22</div></td>
+<td class="ngaythang" title="Ngày Canh Thìn, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,8,2021,0,2459487,29,9,2021);" <div style=color:black class="t2t6">29</div> <div class="am">23</div></td>
+<td class="ngaythang" title="Ngày Tân Tỵ, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,8,2021,0,2459488,30,9,2021);" <div style=color:black class="t2t6">30</div> <div class="am">24</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+<tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">10/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Nhâm Ngọ, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,8,2021,0,2459489,1,10,2021);" <div style=color:black class="t2t6">1</div> <div class="am">25/8</div></td>
+<td class="ngaythang" title="Ngày Quý Mùi, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,8,2021,0,2459490,2,10,2021);" <div style=color:green class="t7">2</div> <div class="am">26</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Giáp Thân, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,8,2021,0,2459491,3,10,2021);" <div style=color:red class="cn">3</div> <div class="am">27</div></td>
+<td class="ngaythang" title="Ngày Ất Dậu, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,8,2021,0,2459492,4,10,2021);" <div style=color:black class="t2t6">4</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Bính Tuất, tháng Đinh Dậu, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(29,8,2021,0,2459493,5,10,2021);" <div style=color:black class="t2t6">5</div> <div class="am">29</div></td>
+<td class="ngaythang" title="Ngày Đinh Hợi, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,9,2021,0,2459494,6,10,2021);" <div style=color:black class="t2t6">6</div> <div class="am">1/9</div></td>
+<td class="ngaythang" title="Ngày Mậu Tý, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,9,2021,0,2459495,7,10,2021);" <div style=color:black class="t2t6">7</div> <div class="am">2</div></td>
+<td class="ngaythang" title="Ngày Kỷ Sửu, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,9,2021,0,2459496,8,10,2021);" <div style=color:black class="t2t6">8</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Canh Dần, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,9,2021,0,2459497,9,10,2021);" <div style=color:green class="t7">9</div> <div class="am">4</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Tân Mão, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,9,2021,0,2459498,10,10,2021);" <div style=color:red class="cn">10</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Nhâm Thìn, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,9,2021,0,2459499,11,10,2021);" <div style=color:black class="t2t6">11</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Quý Tỵ, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,9,2021,0,2459500,12,10,2021);" <div style=color:black class="t2t6">12</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Giáp Ngọ, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,9,2021,0,2459501,13,10,2021);" <div style=color:black class="t2t6">13</div> <div class="am">8</div></td>
+<td class="ngaythang" title="Ngày Ất Mùi, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,9,2021,0,2459502,14,10,2021);" <div style=color:black class="t2t6">14</div> <div class="am">9</div></td>
+<td class="ngaythang" title="Ngày Bính Thân, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,9,2021,0,2459503,15,10,2021);" <div style=color:black class="t2t6">15</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Đinh Dậu, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,9,2021,0,2459504,16,10,2021);" <div style=color:green class="t7">16</div> <div class="am">11</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Mậu Tuất, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,9,2021,0,2459505,17,10,2021);" <div style=color:red class="cn">17</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Kỷ Hợi, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,9,2021,0,2459506,18,10,2021);" <div style=color:black class="t2t6">18</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Canh Tý, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,9,2021,0,2459507,19,10,2021);" <div style=color:black class="t2t6">19</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Tân Sửu, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,9,2021,0,2459508,20,10,2021);" <div style=color:black class="t2t6">20</div> <div class="am">15</div></td>
+<td class="ngaythang" title="Ngày Nhâm Dần, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,9,2021,0,2459509,21,10,2021);" <div style=color:black class="t2t6">21</div> <div class="am">16</div></td>
+<td class="ngaythang" title="Ngày Quý Mão, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,9,2021,0,2459510,22,10,2021);" <div style=color:black class="t2t6">22</div> <div class="am">17</div></td>
+<td class="ngaythang" title="Ngày Giáp Thìn, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,9,2021,0,2459511,23,10,2021);" <div style=color:green class="t7">23</div> <div class="am">18</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Ất Tỵ, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,9,2021,0,2459512,24,10,2021);" <div style=color:red class="cn">24</div> <div class="am">19</div></td>
+<td class="ngaythang" title="Ngày Bính Ngọ, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,9,2021,0,2459513,25,10,2021);" <div style=color:black class="t2t6">25</div> <div class="am">20</div></td>
+<td class="ngaythang" title="Ngày Đinh Mùi, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,9,2021,0,2459514,26,10,2021);" <div style=color:black class="t2t6">26</div> <div class="am">21</div></td>
+<td class="ngaythang" title="Ngày Mậu Thân, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,9,2021,0,2459515,27,10,2021);" <div style=color:black class="t2t6">27</div> <div class="am">22</div></td>
+<td class="ngaythang" title="Ngày Kỷ Dậu, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,9,2021,0,2459516,28,10,2021);" <div style=color:black class="t2t6">28</div> <div class="am">23</div></td>
+<td class="ngaythang" title="Ngày Canh Tuất, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,9,2021,0,2459517,29,10,2021);" <div style=color:black class="t2t6">29</div> <div class="am">24</div></td>
+<td class="ngaythang" title="Ngày Tân Hợi, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,9,2021,0,2459518,30,10,2021);" <div style=color:green class="t7">30</div> <div class="am">25</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Nhâm Tý, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,9,2021,0,2459519,31,10,2021);" <div style=color:red class="cn">31</div> <div class="am">26</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">11/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Quý Sửu, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,9,2021,0,2459520,1,11,2021);" <div style=color:black class="t2t6">1</div> <div class="am">27/9</div></td>
+<td class="ngaythang" title="Ngày Giáp Dần, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,9,2021,0,2459521,2,11,2021);" <div style=color:black class="t2t6">2</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Ất Mão, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(29,9,2021,0,2459522,3,11,2021);" <div style=color:black class="t2t6">3</div> <div class="am">29</div></td>
+<td class="ngaythang" title="Ngày Bính Thìn, tháng Mậu Tuất, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(30,9,2021,0,2459523,4,11,2021);" <div style=color:black class="t2t6">4</div> <div class="am">30</div></td>
+<td class="ngaythang" title="Ngày Đinh Tỵ, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,10,2021,0,2459524,5,11,2021);" <div style=color:black class="t2t6">5</div> <div class="am">1/10</div></td>
+<td class="ngaythang" title="Ngày Mậu Ngọ, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,10,2021,0,2459525,6,11,2021);" <div style=color:green class="t7">6</div> <div class="am">2</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Kỷ Mùi, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,10,2021,0,2459526,7,11,2021);" <div style=color:red class="cn">7</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Canh Thân, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,10,2021,0,2459527,8,11,2021);" <div style=color:black class="t2t6">8</div> <div class="am">4</div></td>
+<td class="ngaythang" title="Ngày Tân Dậu, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,10,2021,0,2459528,9,11,2021);" <div style=color:black class="t2t6">9</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tuất, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,10,2021,0,2459529,10,11,2021);" <div style=color:black class="t2t6">10</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Quý Hợi, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,10,2021,0,2459530,11,11,2021);" <div style=color:black class="t2t6">11</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Giáp Tý, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,10,2021,0,2459531,12,11,2021);" <div style=color:black class="t2t6">12</div> <div class="am">8</div></td>
+<td class="ngaythang" title="Ngày Ất Sửu, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,10,2021,0,2459532,13,11,2021);" <div style=color:green class="t7">13</div> <div class="am">9</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Bính Dần, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,10,2021,0,2459533,14,11,2021);" <div style=color:red class="cn">14</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Đinh Mão, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,10,2021,0,2459534,15,11,2021);" <div style=color:black class="t2t6">15</div> <div class="am">11</div></td>
+<td class="ngaythang" title="Ngày Mậu Thìn, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,10,2021,0,2459535,16,11,2021);" <div style=color:black class="t2t6">16</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Kỷ Tỵ, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,10,2021,0,2459536,17,11,2021);" <div style=color:black class="t2t6">17</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Canh Ngọ, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,10,2021,0,2459537,18,11,2021);" <div style=color:black class="t2t6">18</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Tân Mùi, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,10,2021,0,2459538,19,11,2021);" <div style=color:black class="t2t6">19</div> <div class="am">15</div></td>
+<td class="ngaythang" title="Ngày Nhâm Thân, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,10,2021,0,2459539,20,11,2021);" <div style=color:green class="t7">20</div> <div class="am">16</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Quý Dậu, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,10,2021,0,2459540,21,11,2021);" <div style=color:red class="cn">21</div> <div class="am">17</div></td>
+<td class="ngaythang" title="Ngày Giáp Tuất, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,10,2021,0,2459541,22,11,2021);" <div style=color:black class="t2t6">22</div> <div class="am">18</div></td>
+<td class="ngaythang" title="Ngày Ất Hợi, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,10,2021,0,2459542,23,11,2021);" <div style=color:black class="t2t6">23</div> <div class="am">19</div></td>
+<td class="ngaythang" title="Ngày Bính Tý, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,10,2021,0,2459543,24,11,2021);" <div style=color:black class="t2t6">24</div> <div class="am">20</div></td>
+<td class="ngaythang" title="Ngày Đinh Sửu, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,10,2021,0,2459544,25,11,2021);" <div style=color:black class="t2t6">25</div> <div class="am">21</div></td>
+<td class="ngaythang" title="Ngày Mậu Dần, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,10,2021,0,2459545,26,11,2021);" <div style=color:black class="t2t6">26</div> <div class="am">22</div></td>
+<td class="ngaythang" title="Ngày Kỷ Mão, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,10,2021,0,2459546,27,11,2021);" <div style=color:green class="t7">27</div> <div class="am">23</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Canh Thìn, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,10,2021,0,2459547,28,11,2021);" <div style=color:red class="cn">28</div> <div class="am">24</div></td>
+<td class="ngaythang" title="Ngày Tân Tỵ, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,10,2021,0,2459548,29,11,2021);" <div style=color:black class="t2t6">29</div> <div class="am">25</div></td>
+<td class="ngaythang" title="Ngày Nhâm Ngọ, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,10,2021,0,2459549,30,11,2021);" <div style=color:black class="t2t6">30</div> <div class="am">26</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+<tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td><td class="mois"><table class="thang" border="2" cellpadding="1" cellspacing="1" width="180px">
+<td colspan="3" class="tenthang" onClick="showMonthSelect();">12/2021</td>
+<tr onClick="alertAbout();">
+<td class=ngaytuan>CN</td><td class=ngaytuan>T2</td><td class=ngaytuan>T3</td><td class=ngaytuan>T4</td><td class=ngaytuan>T5</td><td class=ngaytuan>T6</td><td class=ngaytuan>T7</td></tr><tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class="ngaythang" title="Ngày Quý Mùi, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,10,2021,0,2459550,1,12,2021);" <div style=color:black class="t2t6">1</div> <div class="am">27/10</div></td>
+<td class="ngaythang" title="Ngày Giáp Thân, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,10,2021,0,2459551,2,12,2021);" <div style=color:black class="t2t6">2</div> <div class="am">28</div></td>
+<td class="ngaythang" title="Ngày Ất Dậu, tháng Kỷ Hợi, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(29,10,2021,0,2459552,3,12,2021);" <div style=color:black class="t2t6">3</div> <div class="am">29</div></td>
+<td class="ngaythang" title="Ngày Bính Tuất, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(1,11,2021,0,2459553,4,12,2021);" <div style=color:green class="t7">4</div> <div class="am">1/11</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Đinh Hợi, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(2,11,2021,0,2459554,5,12,2021);" <div style=color:red class="cn">5</div> <div class="am">2</div></td>
+<td class="ngaythang" title="Ngày Mậu Tý, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(3,11,2021,0,2459555,6,12,2021);" <div style=color:black class="t2t6">6</div> <div class="am">3</div></td>
+<td class="ngaythang" title="Ngày Kỷ Sửu, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(4,11,2021,0,2459556,7,12,2021);" <div style=color:black class="t2t6">7</div> <div class="am">4</div></td>
+<td class="ngaythang" title="Ngày Canh Dần, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(5,11,2021,0,2459557,8,12,2021);" <div style=color:black class="t2t6">8</div> <div class="am">5</div></td>
+<td class="ngaythang" title="Ngày Tân Mão, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(6,11,2021,0,2459558,9,12,2021);" <div style=color:black class="t2t6">9</div> <div class="am">6</div></td>
+<td class="ngaythang" title="Ngày Nhâm Thìn, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(7,11,2021,0,2459559,10,12,2021);" <div style=color:black class="t2t6">10</div> <div class="am">7</div></td>
+<td class="ngaythang" title="Ngày Quý Tỵ, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(8,11,2021,0,2459560,11,12,2021);" <div style=color:green class="t7">11</div> <div class="am">8</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Giáp Ngọ, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(9,11,2021,0,2459561,12,12,2021);" <div style=color:red class="cn">12</div> <div class="am">9</div></td>
+<td class="ngaythang" title="Ngày Ất Mùi, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(10,11,2021,0,2459562,13,12,2021);" <div style=color:black class="t2t6">13</div> <div class="am">10</div></td>
+<td class="ngaythang" title="Ngày Bính Thân, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(11,11,2021,0,2459563,14,12,2021);" <div style=color:black class="t2t6">14</div> <div class="am">11</div></td>
+<td class="ngaythang" title="Ngày Đinh Dậu, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(12,11,2021,0,2459564,15,12,2021);" <div style=color:black class="t2t6">15</div> <div class="am">12</div></td>
+<td class="ngaythang" title="Ngày Mậu Tuất, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(13,11,2021,0,2459565,16,12,2021);" <div style=color:black class="t2t6">16</div> <div class="am">13</div></td>
+<td class="ngaythang" title="Ngày Kỷ Hợi, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(14,11,2021,0,2459566,17,12,2021);" <div style=color:black class="t2t6">17</div> <div class="am">14</div></td>
+<td class="ngaythang" title="Ngày Canh Tý, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(15,11,2021,0,2459567,18,12,2021);" <div style=color:green class="t7">18</div> <div class="am">15</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Tân Sửu, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(16,11,2021,0,2459568,19,12,2021);" <div style=color:red class="cn">19</div> <div class="am">16</div></td>
+<td class="ngaythang" title="Ngày Nhâm Dần, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(17,11,2021,0,2459569,20,12,2021);" <div style=color:black class="t2t6">20</div> <div class="am">17</div></td>
+<td class="ngaythang" title="Ngày Quý Mão, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(18,11,2021,0,2459570,21,12,2021);" <div style=color:black class="t2t6">21</div> <div class="am">18</div></td>
+<td class="ngaythang" title="Ngày Giáp Thìn, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(19,11,2021,0,2459571,22,12,2021);" <div style=color:black class="t2t6">22</div> <div class="am">19</div></td>
+<td class="ngaythang" title="Ngày Ất Tỵ, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(20,11,2021,0,2459572,23,12,2021);" <div style=color:black class="t2t6">23</div> <div class="am">20</div></td>
+<td class="ngaythang" title="Ngày Bính Ngọ, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(21,11,2021,0,2459573,24,12,2021);" <div style=color:black class="t2t6">24</div> <div class="am">21</div></td>
+<td class="ngaythang" title="Ngày Đinh Mùi, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(22,11,2021,0,2459574,25,12,2021);" <div style=color:green class="t7">25</div> <div class="am">22</div></td>
+</tr>
+<tr><td class="ngaythang" title="Ngày Mậu Thân, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(23,11,2021,0,2459575,26,12,2021);" <div style=color:red class="cn">26</div> <div class="am">23</div></td>
+<td class="ngaythang" title="Ngày Kỷ Dậu, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(24,11,2021,0,2459576,27,12,2021);" <div style=color:black class="t2t6">27</div> <div class="am">24</div></td>
+<td class="ngaythang" title="Ngày Canh Tuất, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(25,11,2021,0,2459577,28,12,2021);" <div style=color:black class="t2t6">28</div> <div class="am">25</div></td>
+<td class="ngaythang" title="Ngày Tân Hợi, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(26,11,2021,0,2459578,29,12,2021);" <div style=color:black class="t2t6">29</div> <div class="am">26</div></td>
+<td class="ngaythang" title="Ngày Nhâm Tý, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(27,11,2021,0,2459579,30,12,2021);" <div style=color:black class="t2t6">30</div> <div class="am">27</div></td>
+<td class="ngaythang" title="Ngày Quý Sửu, tháng Canh Tý, năm Tân Sửu, Tiết: Đông chí" onClick="alertDayInfo(28,11,2021,0,2459580,31,12,2021);" <div style=color:black class="t2t6">31</div> <div class="am">28</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+<tr><td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>
+</tr>
+</table>
+</td></tr><table><script language="JavaScript" src="amlich-hnd.js"></script>

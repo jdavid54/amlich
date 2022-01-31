@@ -1,6 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
 #TIETKHI :
 #Xuân phân (Equinoxe Printemps), Thanh minh, Cốc vũ, Lập hạ, Tiểu mãn, Mang chủng,
 #Hạ chí (Solstice Eté), Tiểu thử, Đại thử, Lập thu, Xử thử, Bạch lộ,
@@ -156,52 +153,9 @@ TIETKHI = ("Xu\u00E2n ph\u00E2n", "Thanh minh", "C\u1ED1c v\u0169", "L\u1EADp h\
     "Thu ph\u00E2n", "H\u00E0n l\u1ED9", "S\u01B0\u01A1ng gi\u00E1ng", "L\u1EADp \u0111\u00F4ng", "Ti\u1EC3u tuy\u1EBFt", "\u0110\u1EA1i tuy\u1EBFt",
     "\u0110\u00F4ng ch\u00ED", "Ti\u1EC3u h\u00E0n", "\u0110\u1EA1i h\u00E0n", "L\u1EADp xu\u00E2n", "V\u0169 Th\u1EE7y", "Kinh tr\u1EADp"
 )
-
-# add principal terms
-#df2['terms'] = df2.loc[:,'Tiết khí']
-terms = ['Tiểu hàn', 'Đại hàn', 'Lập xuân', 'Vũ Thủy', 'Kinh trập',
-       'Xuân phân', 'Thanh minh', 'Cốc vũ', 'Lập hạ', 'Tiểu mãn',
-       'Mang chủng', 'Hạ chí', 'Tiểu thử', 'Đại thử', 'Lập thu', 'Xử thử',
-       'Bạch lộ', 'Thu phân', 'Hàn lộ', 'Sương giáng', 'Lập đông',
-       'Tiểu tuyết', 'Đại tuyết', 'Đông chí']
-
-major_terms = (m for i,m in enumerate(terms) if i%2) 
-
-# https://vi.wikipedia.org/wiki/Ti%E1%BA%BFt_kh%C3%AD
-terms_dates = ['06/01', '21/01', '05/02','19/02', '06/03', '21/03','05/04', '21/04',
-      '06/05', '22/05', '06/06', '22/06', '08/07', '23/07', '08/08', '24/08',
-      '08/09', '24/09', '09/10', '24/10', '08/11', '23/11', '08/12', '22/12']
-
-# longitude soleil
-terms_lon = list(str(k%360)+'°' for k in range(285,631,15))
-
-terms_vi = ['Rét nhẹ', 'Rét đậm','Bắt đầu mùa xuân', 'Mưa ẩm', 'Sâu nở', 'Giữa xuân', 'Trời trong sáng',
-'Mưa rào', 'Bắt đầu mùa hè', 'Lũ nhỏ, duối vàng', 'Chòm sao Tua Rua mọc',
-'Giữa hè', 'Nóng nhẹ', 'Nóng oi', 'Bắt đầu mùa thu', 'Mưa ngâu', 'Nắng nhạt',
-'Giữa thu', 'Mát mẻ', 'Sương mù xuất hiện', 'Bắt đầu mùa đông', 'Tuyết xuất hiện',
-'Tuyết dày', 'Giữa đông']
-
-def show_terms():
-    for k in range(len(terms)):
-        print(terms[k],'=', terms_vi[k], '(', terms_dates[k],')',terms_lon[k])
-
-#show_terms()
-
 weekday = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
-elements = {'Bois': list(CAN[0:2]), 'Feu' : list(CAN[2:4]), 'Terre' : list(CAN[4:6]), 'Métal': list(CAN[6:8]), 'Eau': list(CAN[8:10])}
-CAN_P = list(CAN[k] for k,can in enumerate(CAN) if k%2==0)
-CAN_N = list(CAN[k] for k,can in enumerate(CAN) if k%2==1)
-CHI_P = list(CHI[k] for k,can in enumerate(CHI) if k%2==0)
-CHI_N = list(CHI[k] for k,can in enumerate(CHI) if k%2==1)
 
-def show_data():
-    print('CAN:',CAN)
-    print('CHI:',CHI)
-    print('TUAN:',TUAN)
-    print('GIO_HD:',GIO_HD)
-    print('THANG:',THANG)
-    print('YEARLY_EVENTS:',YEARLY_EVENTS)
-    
+
 class YearlyEvent():
     def __init__(self, dd, mm, info):
         self.day = dd
@@ -222,8 +176,6 @@ YEARLY_EVENTS = (
   YearlyEvent(23,12,'\u00D4ng T\u00E1o ch\u1EA7u tr\u1EDDi (23/12 \u00C2L)')
 );
 
-#print(YEARLY_EVENTS)
-
 class LunarDate():
     def __init__(self, dd, mm, yy, leap, jd):
         self.day = dd
@@ -236,7 +188,7 @@ class LunarDate():
         return f'LunarDate(day={self.day}, month={self.month}, year={self.year}, leap={self.leap}, jd={self.jd})'
     def __str__(self):
         return f'{self.day}, {self.month}, {self.year}, {self.leap}, {self.jd}'
-
+    
 class Tk_data():
     '''
     structure TK : total 25 bits
@@ -245,34 +197,20 @@ class Tk_data():
     12 bits = regularMonthsLenght (0=29, 1=30)
     4 bits = leapMonth number
     '''
-    #regularMonths = ['']*12
+    regularMonths = ['']*12
     
     def __init__(self, k):
-        self.regularMonths = ['']*12
-        self.allMonths = []  
-        self.offsetOfTet = k>>17  
+        self.offsetTet = k>>17  
         self.leapMonth = k & 0xf
-        self.leapMonthLenght = 30 if (k>>16 & 0x1) else 29
+        self.leapMonthlenght = 30 if (k>>16 & 0x1) else 29
         j = k >> 4;
         for i in range(12):                   
             self.regularMonths[12-i-1] = 30 if (j & 0x1) else 29;
             j >>= 1;
         #self.solarNY = jdn(1, 1, yy);
-        self.__allMonth()
-        
     def __repr__(self):
-        return f'Offset Tet = {self.offsetOfTet},\n\
-Leap month number and lenght = {self.leapMonth}, {self.leapMonthLenght},\n\
-Regular months lenght = {self.regularMonths}\n\
-All months = {self.allMonths}'
+        return f'Tk_data(offset Tet={self.offsetTet},\nleap month number={self.leapMonth},\nleap month lenght={self.leapMonthlenght},\nregular months lenght={self.regularMonths}), '
 
-    def __allMonth(self): # add leap month with negative lenght
-        #print("Private method")
-        for i,m in enumerate(self.regularMonths):
-            self.allMonths.append(m)
-            if i+1 == self.leapMonth:
-                self.allMonths.append(-self.leapMonthLenght)
-                
 class OutputOptions():
     def __init__(self):
         self.fontSize = "13pt";

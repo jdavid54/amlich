@@ -1,0 +1,538 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!-- saved from url=(0066)http://www.informatik.uni-leipzig.de/~duc/amlich/calrules_v02.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Thuật toán tính âm lịch</title>
+
+<meta name="Author" content="Hồ Ngọc Đức">
+<meta name="Description" content="thuật toán, công thức, âm lịch">
+<style>@media print {#ghostery-tracker-tally {display:none !important}}</style></head>
+
+<body>
+
+<table width="100%" border="5" bgcolor="#C0FF00">
+<tbody><tr>
+<td width="33%" align="center"> <a href="http://www.informatik.uni-leipzig.de/~duc"><b>Home</b></a> </td>
+<td width="33%" align="center"> <a href="mailto:duc@informatik.uni-leipzig.de"><b>Send email</b></a> </td>
+<td width="*" align="center"> <a href="http://jdictd.sourceforge.net/cgi-bin/guestbook.cgi"><b>Guestbook</b></a> </td>
+</tr>
+</tbody></table>
+
+<div align="right">
+<form name="LunarDateDisplay" action="http://www.informatik.uni-leipzig.de/~duc/amlich/calrules_v02.html">
+<input style="text-align:center" name="lunarDate" type="text" size="64" value="" readonly="" onclick="window.open(&quot;http://www.ifis.uni-luebeck.de/~duc/amlich/JavaScript/&quot;,&quot;AmLich&quot;,&quot;height=500,width=600&quot;);">
+</form>
+</div>
+<script language="JavaScript" src="http://www.ifis.uni-luebeck.de/~duc/amlich-hnd.js">
+</script>
+<script type="text/javascript">
+<!--
+	document.LunarDateDisplay.lunarDate.value = getTodayString();
+//-->
+</script>
+
+<center>
+<font color="red">
+<h1>Thuật toán tính âm lịch</h1>
+<h2>Hồ Ngọc Đức</h2>
+</font>
+</center>
+
+Bài viết sau giới thiệu cách tính âm lịch Việt Nam và mô tả một số thuật toán dùng 
+để chuyển đổi giữa ngày dương lịch và ngày âm lịch. Các thuật toán mô tả ở đây đã được đơn giản hóa nhiều 
+để bạn đọc tiện theo dõi và dễ dàng sử dụng vào việc lập trình, do đó độ chính xác của chúng 
+thấp hơn độ chính xác của chương trình âm lịch trực tuyến tại <a href="http://www.informatik.uni-leipzig.de/~duc/amlich/">
+<b>http://www.informatik.uni-leipzig.de/~duc/amlich/</b></a>.
+
+<p align="right">[If you cannot read Vietnamese: <a href="http://www.informatik.uni-leipzig.de/~duc/amlich/calrules_en.html">Old version in English</a>]</p>
+
+<h2>Quy luật của âm lịch Việt Nam</h2>
+
+Âm lịch Việt Nam là một loại lịch thiên văn. Nó được tính toán dựa trên sự chuyển động của mặt trời, trái đất và mặt trăng. 
+Ngày tháng âm lịch được tính dựa theo các nguyên tắc sau:
+
+<ol>
+<li> Ngày đầu tiên của tháng âm lịch là ngày chứa điểm Sóc
+</li><li> Một năm bình thường có 12 tháng âm lịch, một năm nhuận có 13 tháng âm lịch
+</li><li> Đông chí luôn rơi vào tháng 11 âm lịch
+</li><li> Trong một năm nhuận, nếu có 1 tháng không có Trung khí thì tháng đó là tháng nhuận. Nếu nhiều tháng trong năm nhuận đều không có Trung khí thì chỉ tháng đầu tiên sau Đông chí là tháng nhuận
+</li><li> Việc tính toán dựa trên kinh tuyến 105° đông.
+</li></ol>
+
+<p>
+
+Sóc là thời điểm hội diện, đó là khi trái đất, mặt trăng và mặt trời nằm trên một đường thẳng và mặt trăng nằm giữa trái đất và mặt trời. 
+(Như thế góc giữa mặt trăng và mặt trời bằng 0 độ). Gọi là "hội diện" vì mặt trăng và mặt trời ở cùng một hướng đối với trái đất. 
+Chu kỳ của điểm Sóc là khoảng 29,5 ngày. Ngày chứa điểm Sóc được gọi là ngày Sóc, và đó là ngày bắt đầu tháng âm lịch.
+
+</p><p>
+
+Trung khí là các điểm chia đường hoàng đạo thành 12 phần bằng nhau. Trong đó, bốn Trung khí giữa bốn mùa là đặc biệt nhất: 
+Xuân phân (khoảng 20/3), Hạ chí (khoảng 22/6), Thu phân (khoảng 23/9) và Đông chí (khoảng 22/12).  
+
+</p><p>
+
+Bởi vì dựa trên cả mặt trời và mặt trăng nên lịch Việt Nam không phải là thuần âm lịch mà là âm-dương-lịch. Theo các nguyên tắc trên, 
+để tính ngày tháng âm lịch cho một năm bất kỳ chúng ta cần xác định những ngày nào trong năm chứa các thời điểm Sóc (New moon) 
+và các thời điểm Trung khí (Major solar term). Một khi bạn đã tính được ngày Sóc, bạn đã biết được ngày bắt đầu và kết thúc của một 
+tháng âm lịch: ngày mùng một của tháng âm lịch là ngày chứa điểm sóc.
+
+</p><p>
+
+Sau khi đã biết ngày bắt đầu/kết thúc các tháng âm lịch, bạn có thể xác định tên các tháng và tìm tháng nhuận theo cách sau. 
+Đông chí luôn rơi vào tháng 11 của năm âm lịch. Bởi vậy chúng ta cần tính 2 điểm sóc: Sóc A ngay trước ngày Đông chí thứ nhất 
+và Sóc B ngay trước ngày Đông chí thứ hai. Nếu khoảng cách giữa A và B  là dưới 365 ngày thì năm âm lịch có 12 tháng, 
+và những tháng đó có tên là: tháng 11, tháng 12, tháng 1, tháng 2, …, tháng 10. Ngược lại, nếu khoảng cách giữa hai sóc A và B 
+là trên 365 ngày thì năm âm lịch này là năm nhuận, và chúng ta cần tìm xem đâu là tháng nhuận. 
+Để làm việc này ta xem xét tất cả các tháng giữa A và B, tháng đầu tiên không chứa Trung khí sau ngày Đông chí thứ nhất là tháng nhuận. 
+Tháng đó sẽ được mang tên của tháng trước nó kèm chữ "nhuận".
+
+</p><p>
+
+Khi tính ngày Sóc và ngày chứa Trung khí bạn cần lưu ý xem xét chính xác múi giờ. Đây là lý do tại sao có một vài điểm khác nhau 
+giữa lịch Việt Nam và lịch Trung Quốc.Ví dụ, nếu bạn biết thời điểm hội diện là vào lúc yyyy-02-18 16:24:45 GMT thì ngày Sóc của lịch 
+Việt Nam là 18 tháng 2, bởi vì 16:24:45 GMT là 23:24:45 cùng ngày, giờ Hà nội (GMT+7, kinh tuyến 105° đông). 
+Tuy nhiên theo giờ Bắc Kinh (GMT+8, kinh tuyến 120° đông) thì Sóc là lúc 00:24:45 ngày yyyy-02-19, do đó tháng âm lịch của 
+Trung Quốc lại bắt đầu ngày yyyy-02-19, chậm hơn lịch Việt Nam 1 ngày.
+
+</p><h4>Ví dụ 1: Âm lịch năm 1984</h4>
+
+Chúng ta áp dụng quy luật trên để tính âm lịch Việt nam năm 1984.
+<ul>
+
+<li> Sóc A (ngay trước Đông chí năm 1983) rơi vào ngày 4/12/1983, Sóc B (ngay trước Đông chí năm 1984) vào ngày 23/11/1984.
+
+</li><li> Giữa A và B là khoảng 355 ngày, như thế năm âm lịch 1984 là năm thường. Tháng 11 âm lịch của năm trước kéo dài từ 4/12/1983 
+đến 2/01/1984, tháng 12 âm từ 3/1/1984 đến 1/2/1984, tháng Giêng từ 2/2/1984 đến 1/3/1984 v.v.
+
+</li></ul>
+
+<h4>Ví dụ 2: Âm lịch năm 2004</h4>
+<ul>
+
+<li> Sóc A - điểm sóc cuối cùng trước Đông chí 2003 - rơi vào ngày 23/11/2003. Sóc B (ngay trước Đông chí năm 2004) rơi vào ngày 12/12/2004. 
+
+</li><li> Giữa 2 ngày này là khoảng 385 ngày, như vậy năm âm lịch 2004 là năm nhuận. Tháng 11 âm của năm 2003 bắt đầu vào ngày chứa Sóc A, 
+tức ngày 23/11/2003.
+
+</li><li> Tháng âm lịch đầu tiên sau đó mà không chứa  Trung khí là tháng từ 21/3/2004 đến 18/4/2004 (Xuân phân rơi vào 20/3/2004, còn Cốc vũ là 19/4/2004). 
+Như thế tháng ấy là tháng nhuận. 
+
+</li><li> Từ 23/11/2003 đến 21/3/2004 là khoảng 120 ngày, tức 4 tháng âm lịch: tháng 11, 12, 1 và 2. Như vậy năm 2004 có tháng 2 nhuận.
+</li></ul>
+
+<h2>Lập trình tính lịch âm</h2>
+
+Đã có nhiều chương trình hoàn chỉnh phục vụ cho việc tính toán Sóc và Trung khí với tính chính xác cao. Tuy vậy, muốn tính càng chính 
+xác thì thuật toán càng phức tạp. Muốn viết một chương trình âm lịch với độ chính xác cao bạn nên sử dụng một thư viện thiên văn có sẵn 
+chứ không nên lập trình từ đầu. Bạn có thể tải mã nguồn mở (C, C++, Java...) hoặc DLL để tính các thông số trên tại nhiều trang, 
+chẳng hạn <a href="http://www.projectpluto.com/">http://www.projectpluto.com</a>. Nếu bạn muốn tự lập trình thì có thể sử dụng 
+những thuật toán sau đây. Chúng có lợi thế là tương đối 
+đơn giản hơn nhưng vẫn cho kết quả khá tốt. (Sai số khi tính điểm Sóc dưới 2 phút). Những thuật toán này được giới thiệu dưới dạng mã Java; chúng 
+đã được một số bạn <a href="http://www.informatik.uni-leipzig.de/~duc/amlich/calrules_v02.html#OtherLanguages">thực hiện với các ngôn ngữ khác</a>.
+
+<h3>Một số công thức hỗ trợ</h3>
+
+Trong tính toán thiên văn người ta lấy 12:00:00 GMT ngày 1/1/4713 trước công nguyên của lịch Julius (tức ngày 24/11/4714 trước CN theo lịch Gregorius) làm điểm gốc. Số ngày tính từ điểm gốc này gọi là số ngày Julius (Julian day number) của một thời điểm. Ví dụ, số ngày Julius của 00:00:00 GMT 1/1/2000 là 2451544.5. Ngày Julius 2451544.2083333335 tương ứng với 17:00:00 GMT ngày 31/12/1999, tức 00:00:00 ngày 1/1/2000 giờ Việt Nam. (Việt Nam nằm trong múi giờ thứ 7, do vậy giờ Việt Nam sớm hơn GMT 7 h, tức 7/24 = 0.29167 ngày.)
+
+<p>
+Trong các thuật toán sau chúng ta sử dụng mã của ngôn ngữ Java. Các hàm toán học được sử dụng sau hoặc đã có sẵn trong các ngôn ngữ khác hoặc có thể định nghĩa dễ dàng: Math.PI = 3.14159265358979323846, Math.sqrt(x) là căn bậc hai của x, Math.abs(x) là giá trị tuyệt đối của x, Math.floor(x) là số nguyên lớn nhất không lớn hơn x, còn Math.sin, Math.cos, Math.tan, Math.atan và Math.atan2 là các hàm lượng giác quen thuộc. Phép chia a/b được hiểu như sau. Nếu cả a và b là số nguyên (int) thì / là chia số nguyên, bỏ phần dư. Ví dụ: 7 / 12 = 0; -5 / 12 = 0; -13 / 12 = -1. Nếu ít nhất một trong hai số là số thực (real, float, double) thì / là phép chia số thực, ví dụ: 7.25 / 2.4 = 3.0208333333333335. Chú ý:  khi viết 7.0 ta hiểu là tính toán với số thực 7.0, còn nếu chỉ viết 7 sẽ tính với số nguyên 7. INT(x) tính phần nguyên của một số thực x và MOD tính số dư của phép chia số nguyên x/y với một khác biệt nhỏ: nếu số dư là 0 thì MOD trả lại kết quả là y. Trong Java các hàm đó như sau:
+
+</p><pre>	public static int INT(double d) {
+		return (int)Math.floor(d);
+	}
+
+	public static int MOD(int x, int y) {
+		int z = x - (int)(y * Math.floor(((double)x / y)));
+		if (z == 0) {
+		  z = y;
+		}
+		return z;
+	}
+</pre>
+
+<h4>Đổi ngày dương lịch ra số ngày Julius</h4>
+
+Viết ngày dương lịch dưới dạng D/M/Y (ngày = D, tháng = M, năm = Y). D là một số nguyên từ 1 đến 31, M từ 1 đến 12 và Y là một số nguyên lớn hơn -4712 (âm 4712). Hàm sau tính số ngày Julius của 00:00:00 GMT ngày D/M/Y.
+<p>
+</p><blockquote>
+<b>UniversalToJD(int D, int M, int Y)</b>
+<pre>public static double UniversalToJD(int D, int M, int Y) {
+	double JD;
+	if (Y &gt; 1582 || (Y == 1582 &amp;&amp; M &gt; 10) || (Y == 1582 &amp;&amp; M == 10 &amp;&amp; D &gt; 14)) {
+		JD = 367*Y - INT(7*(Y+INT((M+9)/12))/4) - INT(3*(INT((Y+(M-9)/7)/100)+1)/4) + INT(275*M/9)+D+1721028.5;
+	} else {
+		JD = 367*Y - INT(7*(Y+5001+INT((M-9)/7))/4) + INT(275*M/9)+D+1729776.5;
+	}
+	return JD;
+}
+</pre>
+</blockquote>
+
+Ví dụ: UniversalToJD(1, 1, 2000) = 2451544.5; UniversalToJD(4, 10, 1582) = 2299159.5; UniversalToJD(15, 10, 1582) = 2299160.5; 
+<!--
+UniversalToJD(5, 10, 1582) = 2299160.5 (các ngày từ 5/10/1582 đến 5/10/1582 được hiểu là tiếp tục lịch Julius.)
+-->
+<h4>Đổi số ngày Julius ra ngày dương lịch</h4>
+
+Cho jd là một số dương. Công thức sau đổi ngày Julius jd ra ngày dương lịch m/d/y (theo giờ GMT):
+<p>
+</p><blockquote>
+<b>UniversalFromJD(double JD)</b>
+
+<pre>public static int[] UniversalFromJD(double JD) {
+	int Z, A, alpha, B, C, D, E, dd, mm, yyyy;
+	double F;
+	Z = INT(JD+0.5);
+	F = (JD+0.5)-Z;
+	if (Z &lt; 2299161) {
+	  A = Z;
+	} else {
+	  alpha = INT((Z-1867216.25)/36524.25);
+	  A = Z + 1 + alpha - INT(alpha/4);
+	}
+	B = A + 1524;
+	C = INT( (B-122.1)/365.25);
+	D = INT( 365.25*C );
+	E = INT( (B-D)/30.6001 );
+	dd = INT(B - D - INT(30.6001*E) + F);
+	if (E &lt; 14) {
+	  mm = E - 1;
+	} else {
+	  mm = E - 13;
+	}
+	if (mm &lt; 3) {
+	  yyyy = C - 4715;
+	} else {
+	  yyyy = C - 4716;
+	}
+	return new int[]{dd, mm, yyyy};
+}
+</pre>
+</blockquote>
+
+Ví dụ: UniversalFromJD(2451544.5) = (1, 1, 2000); UniversalFromJD(2451544.2083333335) = (31, 12, 1999); UniversalFromJD(2299160.5) = (15, 10, 1582); UniversalFromJD(2299159.5) = (4, 10, 1582)
+<p>
+
+</p><h4>Chuyển đổi số ngày Julius / ngày dương lịch theo giờ địa phương</h4>
+
+Để chuyển đổi giữa số ngày Julius và ngày dương lịch theo giờ địa phương tại một múi giờ khác, ta phải thêm hoặc bớt khoảng cách (tính bằng ngày) giữa giờ địa phương và GMT. Các hàm LocalFromJD và LocalToJD cho phép làm điều này: LocalFromJD tính ngày tháng năm dương lịch theo giờ địa phương cho một thời điểm, còn LocalToJD tính số ngày Julius cho 0h sáng giờ địa phương ngày D/M/Y. Trong các công thức này, LOCAL_TIMEZONE là số giờ cách biệt giữa giờ địa phương và GMT. (Việt Nam: LOCAL_TIMEZONE = 7.0; Trung Quốc: LOCAL_TIMEZONE = 8.0; Nhật Bản: LOCAL_TIMEZONE = 9.0; California: LOCAL_TIMEZONE = -8.0).
+
+<p>
+
+</p><pre>	public static int[] LocalFromJD(double JD) {
+		return UniversalFromJD(JD + LOCAL_TIMEZONE/24.0);
+	}
+	
+	public static double LocalToJD(int D, int M, int Y) {
+		return UniversalToJD(D, M, Y) - LOCAL_TIMEZONE/24.0;
+	}
+</pre>
+
+Ví dụ: với LOCAL_TIMEZONE = 7.0 thì LocalToJD(1, 1, 2000) = 2451544.2083333335 và LocalFromJD(2451544.2083333335) = (1, 1, 2000).
+
+<h4>Tính thời điểm Sóc</h4>
+
+Như trên đã nói, việc quan trọng đầu tiên khi tính lịch âm là tính xem các điểm Sóc (tức Hội diện) rơi vào ngày nào. Thuật toán sau cho phép tính thời điểm (tính bằng số ngày Julius) của Sóc thứ k tính từ điểm Sóc lúc 13:51 GMT ngày 1/1/1900 (ngày Julius 2415021.076998695).
+ 
+<p>
+</p><blockquote>
+<b>NewMoon(int k)</b>
+<pre>public static double NewMoon(int k) {
+	double T = k/1236.85; // Time in Julian centuries from 1900 January 0.5
+	double T2 = T * T;
+	double T3 = T2 * T;
+	double dr = PI/180;
+	double Jd1 = 2415020.75933 + 29.53058868*k + 0.0001178*T2 - 0.000000155*T3;
+	Jd1 = Jd1 + 0.00033*Math.sin((166.56 + 132.87*T - 0.009173*T2)*dr); // Mean new moon
+	double M = 359.2242 + 29.10535608*k - 0.0000333*T2 - 0.00000347*T3; // Sun's mean anomaly
+	double Mpr = 306.0253 + 385.81691806*k + 0.0107306*T2 + 0.00001236*T3; // Moon's mean anomaly
+	double F = 21.2964 + 390.67050646*k - 0.0016528*T2 - 0.00000239*T3; // Moon's argument of latitude
+	double C1=(0.1734 - 0.000393*T)*Math.sin(M*dr) + 0.0021*Math.sin(2*dr*M);
+	C1 = C1 - 0.4068*Math.sin(Mpr*dr) + 0.0161*Math.sin(dr*2*Mpr);
+	C1 = C1 - 0.0004*Math.sin(dr*3*Mpr);
+	C1 = C1 + 0.0104*Math.sin(dr*2*F) - 0.0051*Math.sin(dr*(M+Mpr));
+	C1 = C1 - 0.0074*Math.sin(dr*(M-Mpr)) + 0.0004*Math.sin(dr*(2*F+M));
+	C1 = C1 - 0.0004*Math.sin(dr*(2*F-M)) - 0.0006*Math.sin(dr*(2*F+Mpr));
+	C1 = C1 + 0.0010*Math.sin(dr*(2*F-Mpr)) + 0.0005*Math.sin(dr*(2*Mpr+M));
+	double deltat;
+	if (T &lt; -11) {
+		deltat= 0.001 + 0.000839*T + 0.0002261*T2 - 0.00000845*T3 - 0.000000081*T*T3;
+	} else {
+		deltat= -0.000278 + 0.000265*T + 0.000262*T2;
+	};
+	double JdNew = Jd1 + C1 - deltat;
+	return JdNew;
+}
+</pre>
+</blockquote>
+
+Với hàm này ta có thể tính được: NewMoon(1236) = 2451520.4393767994, UniversalFromJD(2451520.4393767994) = (7, 12, 1999) còn theo múi giờ thứ 7 của Việt Nam là LocalFromJD(2451520.4393767994) = (8, 12, 1999). (Số ngày Julius 2451520.4393767994 tương ứng với 7/12/1999 22:32:42 GMT hay 8/12/1999 5:32:42 giờ Việt Nam). Như thế theo giờ GMT thì Sóc cuối cùng trong năm 1999 (Sóc thứ 1236 tính từ 1/1/1900) xảy ra vào ngày 7/12/1999 nhưng theo múi giờ thứ 7 thì Sóc này rơi vào ngày 8/12/1999. Tương tự, NewMoon(1237) = 2451550.2601371277; LocalFromJD(2451550.2601371277) = (7, 1, 2000); NewMoon(1238) = 2451580.0448043263; LocalFromJD(2451580.0448043263) = (5, 2, 2000); NewMoon(1239) = 2451609.721434823; LocalFromJD(2451609.721434823) = (6, 3, 2000) v.v. Như thế, theo giờ Việt Nam thì Sóc đầu tiên trong năm 2000 rơi vào ngày 7/1/2000, Sóc thứ hai vào ngày 5/2/2000 và Sóc thứ ba vào ngày 6/3/2000. Với những số liệu này ta đã có thể suy đoán được rằng có một tháng âm lịch bắt đầu ngày 8/12/1999 và các tháng sau đó bắt đầu vào ngày 7/1/2000, 5/2/2000 và 6/3/2000.
+
+<h4>Tính vị trí mặt trời tại một thời điểm</h4>
+
+Dùng hàm NewMoon ta đã xác định được các ngày chứa điểm Sóc, như thế ta biết ngày bắt đầu các tháng âm lịch. Để biết tên các tháng này và biết liệu chúng có phải tháng nhuận không chúng ta cần dựa vào các qui tắc: (1) tháng 11 là tháng chứa Đông chí và (2) tháng nhuận là tháng đầu tiên không chứa Trung khí trong năm nhuận. Để tính xem tháng âm lịch nào chứa Đông chí và tháng vào không chứa Trung khí chúng ta tính vị trí mặt trời trên đường hoàng đạo tại các điểm bắt đầu tháng âm lịch và so sánh chúng với các tọa độ định nghĩa các điểm Trung khí.
+
+<p>
+
+Thuật toán sau cho phép tính vị trí của mặt trời trên quĩ đạo của nó tại một thời điểm bất kỳ (được thể hiện bằng số ngày Julius của thời điểm đó). Kết quả mà thuật toán trả lại là một góc Rađian giữa 0 và 2*PI. 
+Vị trí mặt trời được sử dụng để chia năm thời tiết thành 24 Khí (12 Tiết khí và 12 Trung khí). 
+Một Trung khí là thời điểm mà kinh độ mặt trời có một trong những giá trị sau: 
+0*PI/6, 1*PI/6, 2*PI/6, 3*PI/6, 4*PI/6, 5*PI/6, 6*PI/6, 7*PI/6, 8*PI/6, 9*PI/6, 10*PI/6, 11*PI/6. 
+Các điểm "Phân-Chí" được định nghĩa bằng các tọa độ sau: Xuân phân: 0, Hạ chí: PI/2, 
+Thu phân: PI, Đông chí: 3*PI/2.
+</p><p>
+
+</p><blockquote>
+<b>SunLongitude(double jdn)</b>
+<pre>public static double SunLongitude(double jdn) {
+	double T = (jdn - 2451545.0 ) / 36525; // Time in Julian centuries from 2000-01-01 12:00:00 GMT
+	double T2 = T*T;
+	double dr = PI/180; // degree to radian
+	double M = 357.52910 + 35999.05030*T - 0.0001559*T2 - 0.00000048*T*T2; // mean anomaly, degree
+	double L0 = 280.46645 + 36000.76983*T + 0.0003032*T2; // mean longitude, degree
+	double DL = (1.914600 - 0.004817*T - 0.000014*T2)*Math.sin(dr*M);
+	DL = DL + (0.019993 - 0.000101*T)*Math.sin(dr*2*M) + 0.000290*Math.sin(dr*3*M);
+	double L = L0 + DL; // true longitude, degree
+	L = L*dr;
+	L = L - PI*2*(INT(L/(PI*2))); // Normalize to (0, 2*PI)
+	return L;
+}
+</pre>
+</blockquote>
+
+Ví dụ: kinh độ mặt trời vào lúc 00:00 giờ Hà Nội ngày 8/12/1999 (ngày Julius 2451520.2083333335) là SunLongitude(2451520.2083333335) = 4.453168980086705. Kinh độ mặt trời lúc 00:00 ngày 7/1/2000 (giờ Hà Nội) là SunLongitude(2451520.2083333335) = 4.986246180809974. Vì 4.453168980086705 &lt; 3*PI/2 (= 4.71238898038469) &lt; 4.986246180809974 nên tháng âm lịch bắt đầu vào ngày 8/12/1999 chứa Đông chí.
+
+<h4>Tính tháng âm lịch chứa ngày Đông chí</h4>
+
+Đông chí của một năm y thường rơi vào khoảng ngày 20-22 tháng 12 năm đó. Chúng ta nhớ lại rằng Đông chí 
+là thời điểm mà kinh độ của mặt trời trên đường hoàng đạo là 3*PI/2. Như vậy để tính tháng âm lịch chứa Đông chí ta có thể dùng phương pháp sau:
+<p>
+</p><blockquote>
+<b>LunarMonth11(int Y)</b>
+<pre>public static int[] LunarMonth11(int Y) {
+	double off = LocalToJD(31, 12, Y) - 2415021.076998695;
+	int k = INT(off / 29.530588853);
+	double jd = NewMoon(k);
+	int[] ret = LocalFromJD(jd);
+	double sunLong = SunLongitude(LocalToJD(ret[0], ret[1], ret[2])); // sun longitude at local midnight
+	if (sunLong &gt; 3*PI/2) {
+		jd = NewMoon(k-1);
+	}
+	return LocalFromJD(jd);
+}
+</pre>
+</blockquote>
+
+<h3>Đổi ngày dương lịch ra âm lịch và ngược lại</h3>
+
+<h4>Tính năm âm lịch</h4>
+
+Để thuận tiện cho việc chuyển đổi ngày cho năm âm lịch Y (năm mà ngày Tết rơi vào năm dương lịch Y) chúng ta tạo một bảng với cấu trúc như sau: bảng có 5 hàng và 13 cột (cho năm âm lịch thường) hoặc 14 cột (cho năm nhuận). Mỗi cột chứa 5 số nguyên: DD, MM, YY, NM, LEAP với ý nghĩa sau: ngày dương lịch DD/MM/YY là ngày bắt đầu tháng âm lịch; NM là tên của tháng âm đó (1 đến 12), và LEAP là 1 nếu tháng âm lịch đó là tháng nhuận và 1 nếu tháng đó là tháng thường. Cột đầu tiên thể hiện tháng âm lịch chứa Đông chí năm Y-1 và cột cuối cùng là tháng chứa Đông chí năm Y.
+
+<blockquote>
+<b>LunarYear(int Y)</b>
+<pre>public static final double[] SUNLONG_MAJOR = new double[] {
+	0, PI/6, 2*PI/6, 3*PI/6, 4*PI/6, 5*PI/6, PI, 7*PI/6, 8*PI/6, 9*PI/6, 10*PI/6, 11*PI/6
+};
+
+public static int[][] LunarYear(int Y) {
+	int[][] ret = null;
+	int[] month11A = LunarMonth11(Y-1);
+	double jdMonth11A = LocalToJD(month11A[0], month11A[1], month11A[2]);
+	int k = (int)Math.floor(0.5 + (jdMonth11A - 2415021.076998695) / 29.530588853);
+	int[] month11B = LunarMonth11(Y);
+	double off = LocalToJD(month11B[0], month11B[1], month11B[2]) - jdMonth11A;
+	boolean leap = off &gt; 365.0;
+	if (!leap) {
+		ret = new int[13][5];
+	} else {
+		ret = new int[14][5];
+	}
+	ret[0] = new int[]{month11A[0], month11A[1], month11A[2], 0, 0};
+	ret[ret.length - 1] = new int[]{month11B[0], month11B[1], month11B[2], 0, 0};
+	for (int i = 1; i &lt; ret.length - 1; i++) {
+		double nm = NewMoon(k+i);
+		int[] a = LocalFromJD(nm);
+		ret[i] = new int[]{a[0], a[1], a[2], 0, 0};
+	}
+	for (int i = 0; i &lt; ret.length; i++) {
+		ret[i][3] = MOD(i + 11, 12);
+	}
+	if (leap) {
+		initLeapYear(ret);
+	}
+	return ret;
+}
+
+static void initLeapYear(int[][] ret) {
+	double[] sunLongitudes = new double[ret.length];
+	for (int i = 0; i &lt; ret.length; i++) {
+		int[] a = ret[i];
+		double jdAtMonthBegin = LocalToJD(a[0], a[1], a[2]);
+		sunLongitudes[i] = SunLongitude(jdAtMonthBegin);
+	}
+	boolean found = false;
+	for (int i = 0; i &lt; ret.length; i++) {
+		if (found) {
+			ret[i][3] = MOD(i+10, 12);
+			continue;
+		}
+		double sl1 = sunLongitudes[i];
+		double sl2 = sunLongitudes[i+1];
+		boolean hasMajorTerm = Math.floor(sl1/PI*6) != Math.floor(sl2/PI*6);
+		if (!hasMajorTerm) {
+			found = true;
+			ret[i][4] = 1;
+			ret[i][3] = MOD(i+10, 12);
+		}
+	}		
+}
+</pre>
+</blockquote>
+
+<h4>Đổi ngày dương lịch ra âm lịch</h4>
+
+Sau khi đã tính được tất cả các tháng âm lịch trong một năm ta có thể dễ dàng tìm ra tháng âm lịch chứa một ngày dương lịch d/m/y bất kỳ. Hàm Solar2Lunar đổi ngày D/M/Y dương lịch ra ngày âm lịch (dd,mm,yy,leap) tương ứng: ngày dd tháng mm năm yy âm lịch; mm là tháng nhuận nếu leap=1. 
+
+<blockquote>
+<b>Solar2Lunar(int D, int M, int Y)</b>
+<pre>public static int[] Solar2Lunar(int D, int M, int Y) {
+	int yy = Y;
+	int[][] ly = LunarYear(Y); // Please cache the result of this computation for later use!!!
+	int[] month11 = ly[ly.length - 1];
+	double jdToday = LocalToJD(D, M, Y);
+	double jdMonth11 = LocalToJD(month11[0], month11[1], month11[2]);
+	if (jdToday &gt;= jdMonth11) {
+		ly = LunarYear(Y+1);
+		yy = Y + 1;
+	}
+	int i = ly.length - 1;
+	while (jdToday &lt; LocalToJD(ly[i][0], ly[i][1], ly[i][2])) {
+		i--;
+	}
+	int dd = (int)(jdToday - LocalToJD(ly[i][0], ly[i][1], ly[i][2])) + 1;
+	int mm = ly[i][3];
+	if (mm &gt;= 11) {
+		yy--;
+	}
+	return new int[] {dd, mm, yy, ly[i][4]};
+}
+</pre>
+</blockquote>
+
+<h4>Đổi ngày âm lịch ra dương lịch</h4>
+
+Hàm Lunar2Solar chuyển ngược lại, từ ngày D tháng M (thường nếu leap = 0 hay nhuận nếu leap = 1) năm Y âm lịch ra ngày dd/mm/yy dương lịch.
+
+<p>
+
+</p><blockquote>
+<b>Lunar2Solar(int D, int M, int Y, int leap)</b>
+
+<pre>public static int[] Lunar2Solar(int D, int M, int Y, int leap) {
+	int yy = Y;
+	if (M &gt;= 11) {
+		yy = Y+1;
+	}
+	int[][] lunarYear = getLunarYear(yy);
+	int[] lunarMonth = null;
+	for (int i = 0; i &lt; lunarYear.length; i++) {
+		int[] lm = lunarYear[i];
+		if (lm[3] == M &amp;&amp; lm[4] == leap) {
+			lunarMonth = lm;
+			break;
+		}
+	}
+	if (lunarMonth != null) {
+		double jd = LocalToJD(lunarMonth[0], lunarMonth[1], lunarMonth[2]);
+		return LocalFromJD(jd + D - 1);
+	} else {
+		throw new RuntimeException("Incorrect input!");
+	}
+}
+</pre>
+</blockquote>
+
+<h4>Tính ngày thứ và Can-Chi cho ngày và tháng âm lịch</h4>
+
+Ngày thứ lặp lại theo chu kỳ 7 ngày, như thế để biết một ngày d/m/y bất kỳ là thứ mấy ta chỉ việc tìm số dư của số ngày Julius của ngày này cho 7:
+
+<blockquote>
+<pre>X=MOD((int)(UniversalToJD(d,m,y)+2.5), 7);
+if (X == 1)  return Chu_Nhat;
+if (X == 2) return Thu_2;
+...
+if (X == 7) return Thu_7;
+</pre>
+</blockquote>
+
+<p>
+
+Tương tự như vậy, hiệu Can-Chi của ngày cũng lặp lại theo chu kỳ 60 ngày, như thế nó cũng có thể tính được một cách đơn giản:
+
+</p><blockquote>
+<pre>X = INT(UniversalToJD(d,m,y)+9.5) % 10;
+if (X == 0)  CAN = "Giap";
+if (X == 1) CAN = "At";
+...
+if (X == 9) return "Quy";
+
+Y = INT(UniversalToJD(d,m,y) + 1.5) % 12;
+if (Y == 0)  CHI = "Ty";
+if (X == 1) CHI = "Suu";
+...
+if (X == 11) CHI = "Hoi";
+</pre>
+</blockquote>
+
+<p>
+
+Trong một năm âm lịch, tháng 11 là tháng Tý, tháng 12 là Sửu, tháng Giêng là tháng Dần v.v. Can của tháng M năm Y âm lịch được tính theo công thức sau:
+
+</p><blockquote>
+<pre>X = (Y*12+M+3) % 10;
+if (X == 0)  CAN = "Giap";
+if (X == 1) CAN = "At";
+...
+if (X == 9) return "Quy";
+</pre>
+</blockquote>
+
+Ví dụ, Can-Chi của tháng 3 âm lịch năm Giáp Thân 2004 là Mậu Thìn: tháng 3 âm lịch là tháng Thìn, và (2004*12+3+3) % 10 = 24054 % 10 = 4, như vậy Can của tháng là Mậu.
+
+<p>
+Một tháng nhuận không có tên riêng mà lấy tên của tháng trước đó kèm thêm chữ "Nhuận", VD: tháng 2 nhuận năm Giáp Thân 2004 là tháng Đinh Mão nhuận.
+
+</p><h2>Tài liệu tham khảo</h2>
+
+<ul>
+
+<li>Edward M. Reingold and Nachum Dershowitz, <a href="http://emr.cs.iit.edu/~reingold/calendars.shtml">Calendrical
+Calculations</a></li>
+
+<li>Helmer Aslaksen, <a href="http://www.math.nus.edu.sg/aslaksen/calendar/">The Mathematics
+of the Chinese Calendar</a></li>
+
+<li><a href="http://scienceworld.wolfram.com/astronomy/JulianDate.html">Eric Weisstein's World of Astronomy</a>
+
+</li><li><a href="http://www.projectpluto.com/">projectpluto.com</a> (Open source implementation of many astronomical functions)</li>
+
+<li>Hồ Ngọc Đức, <a href="http://www.informatik.uni-leipzig.de/~duc/amlich/histcal.html">Âm lịch Việt Nam qua các thời kỳ lịch sử</a></li>
+
+<li>Hồ Ngọc Đức, <a href="http://www.ifis.uni-luebeck.de/~duc/amlich/LuniSolarCalendar.java">LuniSolarCalendar.java</a> - Một chương trình Java nhỏ (300 dòng) để chuyển đổi âm dương lịch</li>
+
+<li>Hồ Ngọc Đức, <a href="http://www.ifis.uni-luebeck.de/~duc/amlich/JavaScript/">JavaScript lunar calendar</a> - Chương trình âm lịch Việt Nam bằng JavaScript (cho thời kỳ 1800-2199)
+
+<a name="OtherLanguages">
+</a></li><li><a name="OtherLanguages">Trao đổi về cách tính âm lịch dùng các ngôn ngữ khác: </a><a href="http://jdictd.sourceforge.net/cgi-bin/yabb/YaBB.cgi?board=vncal_general;action=display;num=1094780341">Visual Basic</a>, 
+<a href="http://jdictd.sourceforge.net/cgi-bin/yabb/YaBB.cgi?board=vncal_general;action=display;num=1111593645">PHP</a>
+
+</li></ul>
+
+<hr>
+<img src="http://www.ifis.uni-luebeck.de/~duc/amlich/hnd_pixel.gif">
+
+Sửa đổi lần cuối: 25/03/2005
+
+
+</body></html>
