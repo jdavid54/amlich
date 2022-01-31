@@ -63,7 +63,7 @@ print()
 def show_csv():
     # csv created from 1800-99.ods (tab 202x) with Save as ...
     import pandas as pd
-    df = pd.read_csv('/home/pi/Desktop/amlich/2023.csv')
+    df = pd.read_csv('2023.csv')
     df.fillna('', inplace=True)
 
     print(df)
