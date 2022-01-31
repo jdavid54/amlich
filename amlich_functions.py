@@ -145,7 +145,7 @@ def SunLongitude(jdn):
     lon = lon%(2*PI)
     return lon
 
-def lunar_month(month, year):
+def lunar_month(month, year):  # solar month
     s = ''
     weekday_first, month_length = monthrange(year, month)  #weekday of the first day, length of month
     #print(mr)
@@ -154,7 +154,7 @@ def lunar_month(month, year):
     d = datetime.datetime.today().day
     ld  = getLunarDate(d, month, year)
     #print('Th\u00E1ng ', THANG[ld.month-1], ld.year)
-    s += 'Th\u00E1ng '+str(THANG[ld.month-1])+' '+str(ld.year)+'\n'
+    s += 'Th\u00E1ng '+str(THANG[ld.month-1])+' '+str(ld.year)+'\n'      # solar month
     for wd in weekday:
         #print(wd, end='\t')
         s += str(wd)+'\t'

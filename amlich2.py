@@ -6,7 +6,10 @@ PI = np.pi
 debug = False
 
 from amlich_data import *
+
 '''
+weekday = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+
 ABOUT = "\u00C2m l\u1ECBch Vi\u1EC7t Nam - Version 0.8"+"\n\u00A9 2004 H\u1ED3 Ng\u1ECDc \u0110\u1EE9c [http:#come.to/duc]";
 TK19 = (
     0x30baa3, 0x56ab50, 0x422ba0, 0x2cab61, 0x52a370, 0x3c51e8, 0x60d160, 0x4ae4b0, 0x376926, 0x58daa0,
@@ -60,7 +63,7 @@ TK22 = (
     0x465aa0, 0x30ada5, 0x5695d0, 0x404ad0, 0x2aa9b3, 0x50a4d0, 0x3ad2b7, 0x5eb250, 0x48b540, 0x33d556
 ); #/* Years 2100-2199 */
 TUAN = ("Ch\u1EE7 Nh\u1EADt", "Th\u1EE9 Hai", "Th\u1EE9 Ba", "Th\u1EE9 T\u01B0", "Th\u1EE9 N\u0103m", "Th\u1EE9 S\u00e1u", "Th\u1EE9 B\u1EA3y");
-THANG = ("Gi\u00EAng", "Hai", "Ba", "T\u01B0", "N\u0103m", "S\u00E1u", "B\u1EA3y", "T\u00E1m", "Ch\u00EDn", "M\u01B0\u1EDDi", "M\u1ED9t", "Ch\u1EA1p");
+THANG = ("Gi\u00EAng", "Hai", "Ba", "T\u01B0", "N\u0103m", "S\u00E1u", "B\u1EA3y", "T\u00E1m", "Ch\u00EDn", "M\u01B0\u1EDDi", "M\u01B0\u1EDDi m\u1ED9t", "Ch\u1EA1p");
 CAN = ("Gi\u00e1p", "\u1EA4t", "B\u00ednh", "\u0110inh", "M\u1EADu", "K\u1EF7", "Canh", "T\u00e2n", "Nh\u00e2m", "Qu\u00fd");
 CHI = ("T\375", "S\u1EEDu", "D\u1EA7n", "M\343o", "Th\354n", "T\u1EF5", "Ng\u1ECD", "M\371i", "Th\342n", "D\u1EADu", "Tu\u1EA5t", "H\u1EE3i");
 GIO_HD = ("110100101100", "001101001011", "110011010010", "101100110100", "001011001101", "010010110011");
@@ -263,11 +266,12 @@ def SunLongitude(jdn):
     theta = L0 + DL; # true longitude, degree
     # obtain apparent longitude by correcting for nutation and aberration
     omega = 125.04 - 1934.136 * T;
-    ret = theta - 0.00569 - 0.00478 * math.sin(omega * dr);
+    lon = theta - 0.00569 - 0.00478 * math.sin(omega * dr);
     # Convert to radians
-    ret = ret*dr;
-    ret = ret - PI*2*(int(ret/(PI*2))); # Normalize to (0, 2*PI)
-    return ret;
+    lon = lon*dr;
+    #ret = ret - PI*2*(int(ret/(PI*2))); # Normalize to (0, 2*PI)
+    lon = lon%(2*PI)
+    return lon
 
 def test_longitude():
     print('\nSunLongitude(jdn)')
@@ -400,6 +404,8 @@ def getDayName(lunarDate):
 
     cc = getCanChi(lunarDate);
     s = "Ng\u00E0y " + cc[0] +", th\341ng "+cc[1] + ", n\u0103m " + cc[2];
+    jd = jdn(today.day,today.month,today.year)
+    s += ", Ti\u1EBFt: "+TIETKHI[getSunLongitude(jd+1, 7.0)]
     return s;
 
 
@@ -728,15 +734,66 @@ def test_leap_month():
                                         #leap month number=0,
                                         #leap month lenght=29,
                                         #regular months lenght=[29, 30, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29]),
+def today_info():
+    today = datetime.datetime.today()
+    ld = getLunarDate(today.day,today.month,today.year)            #-> class LunarDate(day=10, month=1, year=2021, leap=0, jd=2459267)
+    yearname = getYearCanChi(ld.year)       #->'Tân Sửu'
+    dayname = getDayName(ld)
+    #'Ngày Canh Tý, tháng Canh Dần, năm Tân Sửu'
+    jd = jdn(today.day,today.month,today.year)
+    daystr = getDayString(ld, today.day, today.month, today.year)  #'Chủ nhật 21/2/2021 -+- Ngày 10 tháng 1'
+    print(daystr)
+    print(dayname)
+    print('Gi\u1EDD Ho\u00E0ng \u0110\u1EA1o : ',getGioHoangDao(ld.jd))            #-> 'Tý (23-1), Sửu (1-3), Mão (5-7), Ngọ (11-13), Thân (15-17)Dậu (17-19)'
+    print(getCurrentTime())                 #-> '11:03:04'
+    #alertDayInfo(dd, mm, yy, leap, jd, today.day, today.month, today.year)
+
+def lunar_month(month, year):    
+    weekday_first, month_length = monthrange(year, month)  #weekday of the first day, length of month
+    #print(mr)
+    #firstday = mr[0]
+    #print(weekday[firstday])
+    d = datetime.datetime.today().day
+    ld  = getLunarDate(d, month, year)
+    print('Th\u00E1ng', THANG[ld.month-1], ld.year)
+    for wd in weekday:
+        print(wd, end='\t')
+    print()
+    for d in range(weekday_first):
+        print(' ', end='\t')
+    for d in range(1,month_length+1):
+        ld = getLunarDate(d, month, year).day
+        ld = str(d)+'/'+str(ld)
+        if d == datetime.datetime.today().day:
+            ld = '('+str(ld)+')'
+        print(ld, end='\t')
+        if (weekday_first+d)%7 == 0 : print()
+    print()
+
 today = datetime.datetime.today()
-ld = getLunarDate(today.day,today.month,today.year)            #-> class LunarDate(day=10, month=1, year=2021, leap=0, jd=2459267)
-yearname = getYearCanChi(ld.year)       #->'Tân Sửu'
-dayname = getDayName(ld)
-#'Ngày Canh Tý, tháng Canh Dần, năm Tân Sửu'
+currentLunarDate = getLunarDate(today.day, today.month, today.year)
+print('Current Lunar Date : ', currentLunarDate)
+print()
+
+from calendar import monthrange, monthcalendar, calendar
+# https://docs.python.org/3/library/calendar.html#calendar.monthrange
+month = today.month
+year = today.year
+#year calendar
+#print(calendar(year))
+
+# month calendar
+def month_cal(year, month):
+    m_cal = monthcalendar(year, month)
+    for k in range(len(m_cal)):
+        print(m_cal[k])
+    print()
+#month_cal(year, month)
+
+#lunar month calendar
+lunar_month(month, year)
+print()
+print('Today info:')
+today_info()
 jd = jdn(today.day,today.month,today.year)
-daystr = getDayString(ld, 28, 2, 2021)  #'Chủ nhật 21/2/2021 -+- Ngày 10 tháng 1'
-print(daystr)
-print(dayname)
-print('Gio Hoang Dao : ',getGioHoangDao(ld.jd))            #-> 'Tý (23-1), Sửu (1-3), Mão (5-7), Ngọ (11-13), Thân (15-17)Dậu (17-19)'
-print(getCurrentTime())                 #-> '11:03:04'
-alertDayInfo(dd, mm, yy, leap, jd, today.day, today.month, today.year)
+print("\nTi\u1EBFt: "+TIETKHI[getSunLongitude(jd+1, 7.0)])

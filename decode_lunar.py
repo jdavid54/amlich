@@ -3,6 +3,7 @@
 
 # include from files
 from amlich_data import *
+from amlich_functions import jdn2date
 
 def getYearCode(yyyy):
     #yearCode;
@@ -69,8 +70,8 @@ def decode_TK(k):  # better use class Tk_data(k)
     #print(tk)
     return tk
 
-def decodeLunarYear(yy, k):  # return list of LunarDate for each month in the year
-    # k = yearCode() from Tk tables  -- called by getYearInfo(yyyy)
+def decodeLunarYear(yy, code):  # return list of LunarDate for each month in the year
+    # code = yearCode() from Tk tables  -- called by getYearInfo(yyyy)
     # monthLengths, regularMonths, offsetOfTet, leapMonth, leapMonthLength, solarNY, currentJD, j, mm;
     ly = [];
     tk = Tk_data(code)  # class Tk_data from amlich_data.py
@@ -97,76 +98,114 @@ def decodeLunarYear(yy, k):  # return list of LunarDate for each month in the ye
             currentJD += tk.regularMonths[mm-1];
     return ly
 
-# test
-yy = 2025
-offset=0
+def test(yy):
+    # test
+    #yy = 2022
+    offset=0
 
-# code = TK tables from amlich_data.py
-code = getYearCode(yy)
-print(code)
+    # code = TK tables from amlich_data.py
+    code = getYearCode(yy)
+    print(yy,code)
 
-tk=decode_TK(code)
-
-# get class variables values
-# for var in dir(tk)[-4:]:
-for variable, value in vars(tk).items():
-    if variable[:1] != '_':
-        #print(getattr(tk,variable))
-        print(variable, value) 
-    
-ly =decodeLunarYear(yy, code)
-print(ly)
-
-from amlich_functions import jdn2date
-monthlenght = len(ly)
-print(monthlenght)
-for k in range(monthlenght):    
-    print(ly[k].jd, jdn2date(ly[k].jd), k+1-ly[k].leap-offset, 'nhuan' if ly[k].leap else '')
-    offset += ly[k].leap
-
-start = 2021
-print('\nYear,\tTet,\t\tregularMonthLenght,allMonths,OffsetTet,LeapMonth,LeapMonthlenght')
-for y in range(start, start+20):
-    print(y, end=' : ')
-    code = getYearCode(y)
-    ly =decodeLunarYear(y, code)
-    print(jdn2date(ly[0].jd),end=',\t')
+    # tk gives the whole year datas (leap month, lenght of each month,..)
     tk = decode_TK(code)
+    print(tk)
+    # get class variables values
+    # for var in dir(tk)[-4:]:
     for variable, value in vars(tk).items():
         if variable[:1] != '_':
-            print(getattr(tk,variable),end=',')
-            #print(variable, value) 
-    print()
+            #print(getattr(tk,variable))
+            print(variable, value) 
 
-y = 2023
-code = getYearCode(y)
-ly =decodeLunarYear(y, code)
-print(ly)
-tk = decode_TK(code)
-print(tk)
-leap = tk.leapMonth
-if leap==0: print('no leap month')
-lenght = tk.leapMonthLenght
+    # decode     
+    ly = decodeLunarYear(yy, code)
+    print('Lunar year:\n',ly)
 
-i = 1
-o = 0
-for l in ly:
-    jd = l.jd
-    print((i-o),'T' if i-1==leap else '',jdn2date(l.jd))
-    if i == leap: o = 1
-    i += 1
 
-# add in tk class
-# all_months = []  # add leap month with negative lenght
-# 
-# for i,m in enumerate(tk.regularMonths):
-#     all_months.append(m)
-#     if i+1==leap: all_months.append(-lenght)
-# 
-# print(all_months)
-print(tk.allMonths, len(tk.allMonths))
+    monthlenght = len(ly)
+    print(monthlenght)
+    for k in range(monthlenght):    
+        print(ly[k].jd, jdn2date(ly[k].jd), k+1-ly[k].leap-offset, 'nhuan' if ly[k].leap else '')
+        offset += ly[k].leap
 
-# call privta method of Tk_data class
-# tk is Tk_data instance
-# don't forget all the _
-tk._Tk_data__allMonth()
+
+def decade(start):
+    #start = 2021
+    print('\nYear,\tTet,\t\tregularMonthLenght,allMonths,OffsetTet,LeapMonth,LeapMonthlenght')
+    for y in range(start, start+10):
+        print(y, end=' : ')
+        code = getYearCode(y)
+        ly = decodeLunarYear(y, code)
+        #print(ly[0])
+        print(jdn2date(ly[0].jd),end=',\t')
+        tk = decode_TK(code)
+        for variable, value in vars(tk).items():
+            if variable[:1] != '_':
+                print(getattr(tk,variable),end=',')
+                #print(variable, value) 
+        print()
+
+def lunar_year(y):
+    #y = 2023
+    print(y)
+    code = getYearCode(y)
+    ly = decodeLunarYear(y, code)
+    print('Decode:',ly)
+    tk = decode_TK(code)
+    print('tk: ',tk)
+    leap = tk.leapMonth
+    if leap==0: print('no leap month')
+    lenght = tk.leapMonthLenght
+
+    i = 1
+    o = 0
+    for l in ly:
+        jd = l.jd
+        print((i-o),'T' if i-1==leap else '',jdn2date(l.jd))
+        if i == leap: o = 1
+        i += 1
+
+    # add in tk class
+    # all_months = []  # add leap month with negative lenght
+    # 
+    # for i,m in enumerate(tk.regularMonths):
+    #     all_months.append(m)
+    #     if i+1==leap: all_months.append(-lenght)
+    # 
+    # print(all_months)
+    print(tk.allMonths, len(tk.allMonths))
+
+    # call privta method of Tk_data class
+    # tk is Tk_data instance
+    # don't forget all the _
+    tk._Tk_data__allMonth()
+
+
+elements = ['Bois', 'Feu', 'Terre', 'Métal', 'Eau']
+CAN_P = list(CAN[k] for k,can in enumerate(CAN) if k%2==0)
+CAN_N = list(CAN[k] for k,can in enumerate(CAN) if k%2==1)
+CHI_P = list(CHI[k] for k,can in enumerate(CHI) if k%2==0)
+CHI_N = list(CHI[k] for k,can in enumerate(CHI) if k%2==1)
+
+from amlich_functions import getYearCanChi, elements
+
+def canchi_element(y):
+    for k in range(y,y+12):
+        
+        cc = getYearCanChi(k)
+        el = cc.split(' ')[0]
+        chi = cc.split(' ')[1]
+        for e in elements.keys():
+            if el in elements[e]: r = e
+        if chi in CHI_P : pol='+'
+        else: pol ='-'
+        print(k,cc, r, pol)
+
+if __name__ == '__main__':
+    year = 2022
+    test(year)
+    decade(year)
+    #lunar_year(year)
+    print(CAN_P,CHI_P)
+    print(CAN_N, CHI_N)
+    canchi_element(year)

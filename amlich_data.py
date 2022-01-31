@@ -157,7 +157,42 @@ TIETKHI = ("Xu\u00E2n ph\u00E2n", "Thanh minh", "C\u1ED1c v\u0169", "L\u1EADp h\
     "\u0110\u00F4ng ch\u00ED", "Ti\u1EC3u h\u00E0n", "\u0110\u1EA1i h\u00E0n", "L\u1EADp xu\u00E2n", "V\u0169 Th\u1EE7y", "Kinh tr\u1EADp"
 )
 
+# add principal terms
+#df2['terms'] = df2.loc[:,'Tiết khí']
+terms = ['Tiểu hàn', 'Đại hàn', 'Lập xuân', 'Vũ Thủy', 'Kinh trập',
+       'Xuân phân', 'Thanh minh', 'Cốc vũ', 'Lập hạ', 'Tiểu mãn',
+       'Mang chủng', 'Hạ chí', 'Tiểu thử', 'Đại thử', 'Lập thu', 'Xử thử',
+       'Bạch lộ', 'Thu phân', 'Hàn lộ', 'Sương giáng', 'Lập đông',
+       'Tiểu tuyết', 'Đại tuyết', 'Đông chí']
+
+major_terms = (m for i,m in enumerate(terms) if i%2) 
+
+# https://vi.wikipedia.org/wiki/Ti%E1%BA%BFt_kh%C3%AD
+terms_dates = ['06/01', '21/01', '05/02','19/02', '06/03', '21/03','05/04', '21/04',
+      '06/05', '22/05', '06/06', '22/06', '08/07', '23/07', '08/08', '24/08',
+      '08/09', '24/09', '09/10', '24/10', '08/11', '23/11', '08/12', '22/12']
+
+# longitude soleil
+terms_lon = list(str(k%360)+'°' for k in range(285,631,15))
+
+terms_vi = ['Rét nhẹ', 'Rét đậm','Bắt đầu mùa xuân', 'Mưa ẩm', 'Sâu nở', 'Giữa xuân', 'Trời trong sáng',
+'Mưa rào', 'Bắt đầu mùa hè', 'Lũ nhỏ, duối vàng', 'Chòm sao Tua Rua mọc',
+'Giữa hè', 'Nóng nhẹ', 'Nóng oi', 'Bắt đầu mùa thu', 'Mưa ngâu', 'Nắng nhạt',
+'Giữa thu', 'Mát mẻ', 'Sương mù xuất hiện', 'Bắt đầu mùa đông', 'Tuyết xuất hiện',
+'Tuyết dày', 'Giữa đông']
+
+def show_terms():
+    for k in range(len(terms)):
+        print(terms[k],'=', terms_vi[k], '(', terms_dates[k],')',terms_lon[k])
+
+#show_terms()
+
 weekday = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+elements = {'Bois': list(CAN[0:2]), 'Feu' : list(CAN[2:4]), 'Terre' : list(CAN[4:6]), 'Métal': list(CAN[6:8]), 'Eau': list(CAN[8:10])}
+CAN_P = list(CAN[k] for k,can in enumerate(CAN) if k%2==0)
+CAN_N = list(CAN[k] for k,can in enumerate(CAN) if k%2==1)
+CHI_P = list(CHI[k] for k,can in enumerate(CHI) if k%2==0)
+CHI_N = list(CHI[k] for k,can in enumerate(CHI) if k%2==1)
 
 def show_data():
     print('CAN:',CAN)
@@ -186,6 +221,8 @@ YEARLY_EVENTS = (
   YearlyEvent(15,8,'T\u1EBFt Trung Thu (R\u1EB1m th\u00E1ng 8)'),
   YearlyEvent(23,12,'\u00D4ng T\u00E1o ch\u1EA7u tr\u1EDDi (23/12 \u00C2L)')
 );
+
+#print(YEARLY_EVENTS)
 
 class LunarDate():
     def __init__(self, dd, mm, yy, leap, jd):

@@ -37,23 +37,33 @@ yy = 2025
 offset=0
 # decode lunar year : get the julian day of the beginning of each lunar month and leap status
 ly = getYearInfo(yy)   # decodeLunarYear(yy, getYearCode(yy))
-print('Year :',yy)
+print('\nYear :',yy)
+leap_month = 0
+
 for k in range(len(ly)):    
     print(ly[k].jd,jdn2date(ly[k].jd), k+1-ly[k].leap-offset, 'nhuan (leap)' if ly[k].leap else '')
     offset += ly[k].leap
+    if ly[k].leap == 1:
+        leap_month = ly[k].month
 print('=========================================')
 
 # function lunar_month()
 # show lunar month
-mm = 6 # normal 6th month for 2025
-print('normal :',lunar_month(mm, yy))
+if leap_month :
+    mm = leap_month+offset # normal 6th month for 2025
+    print('normal :',lunar_month(mm-1, yy))
+    print()
+    #mm = leap_month # 6th leap month for 2025
+    print('leap :',lunar_month(mm+1, yy))
+else :
+    print('No leap month for', yy)
+
 print()
-mm = 7 # 6th leap month for 2025
-print('leap :',lunar_month(mm, yy))
 
-# csv created from 1800-99.ods (tab 2025)
-import pandas as pd
-df = pd.read_csv('/home/pi/Desktop/amlich/2025.csv')
-df.fillna('', inplace=True)
+def show_csv():
+    # csv created from 1800-99.ods (tab 202x) with Save as ...
+    import pandas as pd
+    df = pd.read_csv('/home/pi/Desktop/amlich/2023.csv')
+    df.fillna('', inplace=True)
 
-print(df)
+    print(df)
