@@ -44,9 +44,11 @@ use : tk = Tk_data(year)
 
 2) LunarDate : (dd, mm, yy, leap, jd)
 
-    getYearInfo(yy) will give a list of LunarDate for each lunar month of yy 
+    getYearInfo(yy) will give a list of LunarDate for each lunar month of yy
     
-# example 2025
+    A quick way to know if a year has a leap month : year%19 (% = rest of division) must be 90,3,6,9,11,14,17)
+    
+# example 2025 (2015 % 19 = 11 so 2025 has a leap month !
 
 A leap month is a month that not include a major solar term. Here the lunar month after lunar month 6 6 has no major term because the major term Xử thử is part of the next lunar mont as it happens the same day as the next new moon on 23/08.
 
