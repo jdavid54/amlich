@@ -12,6 +12,9 @@
 #http://www.informatik.uni-leipzig.de/~duc/amlich/DuLieu/index.html
 # https://vi.wikipedia.org/wiki/Ti%E1%BA%BFt_kh%C3%AD
 
+tropic_year = 365.2421898      #annee tropique jours
+synodic_period = 29.530588853  #mois synodique jours
+
 
 ABOUT = "\u00C2m l\u1ECBch Vi\u1EC7t Nam - Version 1.0"+"\n\u00A9 2004 H\u1ED3 Ng\u1ECDc \u0110\u1EE9c";
 
@@ -249,7 +252,8 @@ class Tk_data():
     
     def __init__(self, k):
         self.regularMonths = ['']*12
-        self.allMonths = []  
+        self.allMonths = []
+        self.nDays = 0
         self.offsetOfTet = k>>17  
         self.leapMonth = k & 0xf
         self.leapMonthLenght = 30 if (k>>16 & 0x1) else 29
@@ -264,7 +268,7 @@ class Tk_data():
         return f'Offset Tet = {self.offsetOfTet},\n\
 Leap month number and lenght = {self.leapMonth}, {self.leapMonthLenght},\n\
 Regular months lenght = {self.regularMonths}\n\
-All months = {self.allMonths}'
+All months = {self.allMonths}\nTotal days = {self.nDays}'
 
     def __allMonth(self): # add leap month with negative lenght
         #print("Private method")
@@ -272,6 +276,7 @@ All months = {self.allMonths}'
             self.allMonths.append(m)
             if i+1 == self.leapMonth:
                 self.allMonths.append(-self.leapMonthLenght)
+        self.nDays = sum(list(map(abs, self.allMonths)))
                 
 class OutputOptions():
     def __init__(self):

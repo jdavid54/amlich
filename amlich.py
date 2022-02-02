@@ -5,6 +5,15 @@ PI = np.pi
 #from amlich_data import *
 from amlich_lib import *
 
+#TIETKHI :
+#Xuân phân (Equinoxe Printemps), Thanh minh, Cốc vũ, Lập hạ, Tiểu mãn, Mang chủng,
+#Hạ chí (Solstice Eté), Tiểu thử, Đại thử, Lập thu, Xử thử, Bạch lộ,
+#Thu phân (Equinoxe Automne), Hàn lộ, Sương giáng, Lập đông, Tiểu tuyết, Đại tuyết,
+#Đông chí (Solstice Hiver), Tiểu hàn, Đại hàn, Lập xuân, Vũ Thủy, Kinh trập
+
+# giờ Sóc (New Moons), Trung khí (Major Solar Term) và Tiết khí (Minor Solar Terms) 
+
+#http://www.informatik.uni-leipzig.de/~duc/amlich/DuLieu/index.html
 # https://vi.wikipedia.org/wiki/Ti%E1%BA%BFt_kh%C3%AD
 #print("Tableaux OK !<br>")
 
@@ -23,30 +32,32 @@ def retrieve_name(var):
 
 tabs = (TUAN, THANG, CAN, CHI, GIO_HD, TIETKHI)
 
-for t in tabs:
-  print(retrieve_name(t)[0], end=' : ')
-  for i in t:
-    print(i, end=", ")
-  print()
+def show_tabs():
+    for t in tabs:
+      print(retrieve_name(t)[0], end=' : ')
+      for i in t:
+        print(i, end=", ")
+      print()
 
-print("Tableau YEARLY_EVENTS OK !")
-print(YEARLY_EVENTS)
+    print("Tableau YEARLY_EVENTS OK !")
+    print(YEARLY_EVENTS)
 
 result = findEvents(15,1)
 print("\nresult=",result)
 
 print('getdayinfo 1/1 lunar',getDayInfo(1,1))
 
-print('\nShowdayInfo')
+print('\nShowdayInfo :')
+# showDayInfo(cell, dd, mm, yy, leap, length, jd, sday, smonth, syear):  # sday : solar day (DL), dd : moon day (AL)
 showDayInfo(1,20,12,2020,0,30,2459247,1,2,2021)
 showDayInfo(27,16,1,2021,0,29,2459273,27,2,2021)
 showDayInfo(24,10,3,2021,0,30,2459326,21,4,2021)
 
-print('canchi 1954 :',getYearCanChi(1954))
+print('\ncanchi 1954 :',getYearCanChi(1954))
 
 import datetime
 
-def test():
+def test1():
     print('\nStart test')
     #print(datetime.datetime.fromtimestamp(2440224))
     #print(datetime.datetime.fromtimestamp(2459247))
@@ -90,7 +101,7 @@ def test():
     print(jdn)
 
 #test()
-debug = False
+#debug = False
 
 today = datetime.datetime.today()    
 print("\nAujourd'hui  : ",today)
@@ -104,6 +115,7 @@ print(getGioHoangDao(int(jdn+0.5)))
 sol_t = getSolarTerm(jdn+1, 1.0)
 print(sol_t)
 print(TIETKHI[sol_t])
+
 '''
 for i in range(-12,12):
     print(i,SunLongitude(jdn+1),SunLongitude(jdn+1 - 0.5 - i/24.0) /PI*12,getSolarTerm(jdn+1, i),TIETKHI[getSolarTerm(jdn+1, i)])
@@ -115,19 +127,17 @@ def leap(year):
     if year%19 in sequence : return True
     else : return False
 
-print('leap2021',leap(2021))
-print('leap2020',leap(2020))
+# print('leap2022',leap(2022))
+# print('leap2023',leap(2023))
 
-tropic_year = 365.2421898    #jours
-synodic_period = 29.530588853  #jours
+tropic_year = 365.2421898      #annee tropique jours
+synodic_period = 29.530588853  #mois synodique jours
 
 def div_euclid(n,m):   # n>m
     ent = n//m
     ret = int(n/m)
     frac = n-(m*ent)
     return ent, frac, ret
-
-print('\ndiv_euclid ',div_euclid(15625,6842))
 
 def frac_cont(n,m):
     ret = ''
@@ -140,24 +150,25 @@ def frac_cont(n,m):
         fc.append(ret)
     return fc
 
-print('\nfrac_cont ',frac_cont(15625,6842))
-fc = frac_cont(tropic_year,synodic_period)
-print(fc)
  
-def dev_frac(fc, rang):
+def dev_frac(fc, rang, debug=False):
     if rang == 1 : return fc[0]
     fs = fc[0:rang]
-    print(fs)
+    if debug: print(fs)
     s = 0 
     for r in range(1,rang):
         s = 1/(fs[-r]+s)
     return s + fs[0]
 
-s = dev_frac(fc, 4)
-print('dev_frac : ',s)
-
-print('frac_cont 235,19 ',frac_cont(235,19))     # cycle de Méton
-print('frac_cont 12628,1021 ',frac_cont(12628,1021))
+def test2():
+    print('\ndiv_euclid ',div_euclid(15625,6842))
+    print('\nfrac_cont ',frac_cont(15625,6842))
+    fc = frac_cont(tropic_year,synodic_period)
+    print(fc)
+    s = dev_frac(fc, 4)
+    print('dev_frac : ',s)
+    print('frac_cont 235,19 ',frac_cont(235,19))     # cycle de Méton
+    print('frac_cont 12628,1021 ',frac_cont(12628,1021))
 
 # https://thientue.vn/nam-2020-co-nhuan-khong.html
 # https://reference.vn/lich-am-2020-nhuan-thang-may.html
@@ -166,14 +177,17 @@ leapmonth = ((1995,8),(1998,5),(2001,4),(2004,2),
              (2014,9),(2017,6),(2020,4),(2023,2),
              (2025,6),(2028,5),(2031,3))
 
-print('tk_data 2017 :\n', Tk_data(getYearCode(2017)))
+def show_tk(year):
+    tk = Tk_data(getYearCode(year))
+    print('tk_data '+str(year)+' :\n', tk)#.leapMonth)
 
-#TIETKHI :
-#Xuân phân (Equinoxe Printemps), Thanh minh, Cốc vũ, Lập hạ, Tiểu mãn, Mang chủng,
-#Hạ chí (Solstice Eté), Tiểu thử, Đại thử, Lập thu, Xử thử, Bạch lộ,
-#Thu phân (Equinoxe Automne), Hàn lộ, Sương giáng, Lập đông, Tiểu tuyết, Đại tuyết,
-#Đông chí (Solstice Hiver), Tiểu hàn, Đại hàn, Lập xuân, Vũ Thủy, Kinh trập
 
-# giờ Sóc (New Moons), Trung khí (Major Solar Term) và Tiết khí (Minor Solar Terms) 
+# show_tk(1995)  #leap month 8
+# show_tk(1998)  #leap month 5
+# show_tk(2001)  #leap month 4
 
-#http://www.informatik.uni-leipzig.de/~duc/amlich/DuLieu/index.html
+for y in range(2020,2039):  #sequence = (0,3,6,9,11,14,17)
+    #if leap(y):
+        print(y,y%19,leap(y))
+        show_tk(y)
+        print()

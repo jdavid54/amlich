@@ -3,9 +3,9 @@
 
 from amlich_functions import  *
 
-def date_info():
+def date_info(dd, mm, yy):
     # julian day
-    dd, mm, yy = 12, 1, 2022
+#     dd, mm, yy = 2, 2, 2022
     # julian day
     jd = jdn(dd, mm, yy)
     print(dd,mm,yy,'Julian date:',jd)
@@ -30,7 +30,8 @@ def date_info():
     print('Gi\u1EDD Ho\u00E0ng \u0110\u1EA1o : ',getGioHoangDao(ld.jd)) 
 
 today_info()
-#date_info()
+print()
+date_info(1,2,2022)
 
 # function get_YearInfo()
 yy = 2025
