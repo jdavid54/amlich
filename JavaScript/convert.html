@@ -1,0 +1,244 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="Author" CONTENT="Ho Ngoc Duc">
+<title>&#194;m l&#7883;ch Vi&#7879;t Nam @ H&#7891; Ng&#7885;c &#272;&#7913;c</title>
+
+<style type="text/css">
+<!--
+  .solar {background-color:#FFFFCC}
+  .lunar {background-color:#CCFFCC}
+  .even {background-color:#FDFDF0}
+  .odd {background-color:#FFFFCC}
+-->
+</style>
+<SCRIPT LANGUAGE="JavaScript" SRC="amlich-ntt.js"></SCRIPT>
+
+<script>
+function convertSolarToLunar()
+{
+var dd, mm, yy, sd, ld;
+dd = document.getElementById("S_DD").value-0;
+mm = document.getElementById("S_MM").value-0;
+yy = document.getElementById("S_YY").value-0;
+
+ld = getLunarDate(dd, mm, yy);
+sd = jdn2date(ld.jd);
+
+updateValues(sd, ld);
+}
+
+function computeYearCanChi() {
+	var yy = document.getElementById("L_YY").value-0;
+	document.getElementById("L_CC").value = getYearCanChi(yy);
+}
+
+function convertLunarToSolar()
+{
+	var dd, mm, yy, sd, ld;
+	dd = document.getElementById("L_DD").value-0;
+	mm = document.getElementById("L_MM").value-0;
+	yy = document.getElementById("L_YY").value-0;
+
+	sd = getSolarDate(dd, mm, yy);
+	ld = getLunarDate(sd[0], sd[1], sd[2]);
+	updateValues(sd, ld);
+}
+
+function showToday() {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1;
+	var yy = today.getFullYear();
+	var sd = new Array(dd, mm, yy);
+	var ld = getLunarDate(dd, mm, yy);
+	updateValues(sd, ld);
+}
+
+function updateValues(sd, ld) {
+	document.getElementById("S_DD").selectedIndex = sd[0]-1;
+	document.getElementById("S_MM").selectedIndex = sd[1]-1;
+	document.getElementById("S_YY").value = sd[2];
+
+	document.getElementById("L_DD").selectedIndex = ld.day-1;
+	document.getElementById("L_MM").selectedIndex = ld.month-1;
+	document.getElementById("L_YY").value = ld.year;
+	document.getElementById("L_CC").innerHTML = getYearCanChi(ld.year);
+	if (ld.leap == 1) {
+		document.getElementById("L_LL").innerHTML = "nhu\u1EADn";
+	} else {
+		document.getElementById("L_LL").innerHTML = "";
+	}
+	document.getElementById("L2SButton").value = 'Đổi ngày '+ld.day+'/'+ld.month+' âm sang ngày dương cho 20 năm '+ld.year+'-'+(ld.year+19);
+}
+
+function computeSolarDates() {
+	var res = "";
+	var dd, mm, yy, sd, ld, i, cls, thu;
+	dd = document.getElementById("L_DD").value-0;
+	mm = document.getElementById("L_MM").value-0;
+	yy = document.getElementById("L_YY").value-0;
+	res += '<table border="1">';
+	res += '<tr><th>Ngày âm</th><th>Ngày d&#x1B0;&#x1A1;ng</th></tr>';
+	for (i=0; i<20; i++) {
+		sd = getSolarDate(dd, mm, yy+i);
+		ld = getLunarDate(sd[0], sd[1], sd[2]);
+		if (ld.day != dd && dd == 30) {
+			sd = jdn2date(ld.jd-1);
+			ld = getLunarDate(sd[0], sd[1], sd[2]);
+		}
+		cls = (i % 2 == 0) ? "even" : "odd";
+		thu = (ld.jd+1) % 7;
+		res += '<tr class="'+cls+'"><td>'+ld.day+'/'+ld.month+' '+getYearCanChi(ld.year)+'</td>\n';
+		res += '<td>'+TUAN[thu] + ' ' + sd[0]+'/'+sd[1]+'/'+sd[2]+'</td></tr>\n';
+	}
+	res += '</table>';
+	document.getElementById("conversion_result").innerHTML = res;
+}
+</script>
+</head>
+
+<body onload="showToday();">
+
+<h2>Chuyển đổi ngày âm dương</h2>
+
+<FORM>
+
+<table border="1" cellpadding="1" cellspacing="5">
+
+<tr class="lunar">
+<td>Ngày âm:</td>
+<td>
+<select name="L_DD" id="L_DD" onchange="convertLunarToSolar();">
+  <option value="1">1
+  <option value="2">2
+  <option value="3">3
+  <option value="4">4
+  <option value="5">5
+  <option value="6">6
+  <option value="7">7
+  <option value="8">8
+  <option value="9">9
+  <option value="10">10
+  <option value="11">11
+  <option value="12">12
+  <option value="13">13
+  <option value="14">14
+  <option value="15">15
+  <option value="16">16
+  <option value="17">17
+  <option value="18">18
+  <option value="19">19
+  <option value="20">20
+  <option value="21">21
+  <option value="22">22
+  <option value="23">23
+  <option value="24">24
+  <option value="25">25
+  <option value="26">26
+  <option value="27">27
+  <option value="28">28
+  <option value="29">29
+  <option value="30">30
+</select>
+</td>
+
+<td>
+tháng <select id="L_MM" onchange="convertLunarToSolar();">
+  <option value="1">1
+  <option value="2">2
+  <option value="3">3
+  <option value="4">4
+  <option value="5">5
+  <option value="6">6
+  <option value="7">7
+  <option value="8">8
+  <option value="9">9
+  <option value="10">10
+  <option value="11">11
+  <option value="12">12
+</select>
+<span id="L_LL"></span>
+</td>
+
+<td>
+năm <span id="L_CC"></span> <INPUT TYPE="text" id="L_YY" VALUE="2014" SIZE="4" MAXLENGTH="4" onchange="convertLunarToSolar();">
+</td>
+
+</tr>
+
+<tr class="solar">
+
+<td>Ngày dương:</td>
+
+<td>
+<select name="S_DD" id="S_DD" onchange="convertSolarToLunar();">
+  <option value="1">1
+  <option value="2">2
+  <option value="3">3
+  <option value="4">4
+  <option value="5">5
+  <option value="6">6
+  <option value="7">7
+  <option value="8">8
+  <option value="9">9
+  <option value="10">10
+  <option value="11">11
+  <option value="12">12
+  <option value="13">13
+  <option value="14">14
+  <option value="15">15
+  <option value="16">16
+  <option value="17">17
+  <option value="18">18
+  <option value="19">19
+  <option value="20">20
+  <option value="21">21
+  <option value="22">22
+  <option value="23">23
+  <option value="24">24
+  <option value="25">25
+  <option value="26">26
+  <option value="27">27
+  <option value="28">28
+  <option value="29">29
+  <option value="30">30
+  <option value="31">31
+</select>
+</td>
+
+<td>
+tháng <select name="S_MM" id="S_MM" onchange="convertSolarToLunar();">
+  <option value="1">1
+  <option value="2">2
+  <option value="3">3
+  <option value="4">4
+  <option value="5">5
+  <option value="6">6
+  <option value="7">7
+  <option value="8">8
+  <option value="9">9
+  <option value="10">10
+  <option value="11">11
+  <option value="12">12
+</select>
+</td>
+
+<td>
+năm <INPUT TYPE="text" id="S_YY" VALUE="2014" SIZE="4" MAXLENGTH="4" onchange="convertSolarToLunar();">
+</td>
+
+</tr>
+</table>
+
+<p>
+<INPUT type="button" id="L2SButton" value="Đổi ngày âm trên sang ngày dương cho 20 năm sau" onclick="computeSolarDates();">
+<p>
+<div id="conversion_result">
+</div>
+
+</FORM>
+
+</body>
+
+</html>
