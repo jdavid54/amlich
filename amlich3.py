@@ -170,8 +170,10 @@ today_info()
 #alertAbout()
 # ========================create html page on desktop (big, normal or small)
 setOutputSize('small')
-res = printYear(2021, 4)   # 6 months by row
+res = printYear(2022, 4)   # 6 months by row
 
-with open('c:/users/jean/documents/year.html','wb') as f:
-    f.write(res.encode('utf-8'))
+# with open('c:/users/jean/documents/python/amlich/year.html','wb') as f:
+#     f.write(res.encode('utf-8'))
 
+file = 'c:/users/jean/documents/python/amlich/year.html'
+write2file(file,res)

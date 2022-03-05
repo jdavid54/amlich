@@ -578,9 +578,8 @@ def printYear(yy, by=3):
     return res;
 
 def write2file(file, res):
-    f=open(file, 'w')
-    f.write(res)
-    f.close()
+    with open(file,'wb') as f:
+        f.write(res.encode('utf-8'))
     
 def printStyle():
     fontSize = PRINT_OPTS.fontSize;
