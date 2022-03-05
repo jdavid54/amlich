@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 '''
 ['ABOUT', 'CAN', 'CHI', 'DAYNAMES', 'FONT_SIZES', 'GIO_HD', 'LunarDate', 'OutputOptions', 'PI', 'PRINT_OPTS',
 'SunLongitude', 'TAB_WIDTHS', 'THANG', 'TIETKHI', 'TK13', 'TK14', 'TK15', 'TK16', 'TK17', 'TK18', 'TK19', 'TK20',
@@ -70,8 +73,8 @@ def jdn2date(jd):
     return (dd, mm, yyyy);
 
 def decodeLunarYear(yy, k):
-    #k = yearCode from Tk tables  -- called by getYearInfo(yyyy)
-    #monthLengths, regularMonths, offsetOfTet, leapMonth, leapMonthLength, solarNY, currentJD, j, mm;
+    # k = yearCode() from Tk tables  -- called by getYearInfo(yyyy)
+    # monthLengths, regularMonths, offsetOfTet, leapMonth, leapMonthLength, solarNY, currentJD, j, mm;
     ly = [];
     monthLengths = [29, 30];
     regularMonths = ['']*12;
@@ -102,7 +105,7 @@ def decodeLunarYear(yy, k):
         for mm in range(leapMonth+1,13):  #; mm <= 12; mm++):
             ly.append(LunarDate(1, mm, yy, 0, currentJD));
             currentJD += regularMonths[mm-1];
-    return ly;
+    return ly
 
 def findLunarDate(jd, ly):
     FIRST_DAY = jdn(25, 1, 1800); ## Tet am lich 1800
@@ -142,7 +145,7 @@ def SunLongitude(jdn):
     lon = lon%(2*PI)
     return lon
 
-def lunar_month(month, year):
+def lunar_month(month, year):  # solar month
     s = ''
     weekday_first, month_length = monthrange(year, month)  #weekday of the first day, length of month
     #print(mr)
@@ -151,7 +154,7 @@ def lunar_month(month, year):
     d = datetime.datetime.today().day
     ld  = getLunarDate(d, month, year)
     #print('Th\u00E1ng ', THANG[ld.month-1], ld.year)
-    s += 'Th\u00E1ng '+str(THANG[ld.month-1])+' '+str(ld.year)+'\n'
+    s += 'Th\u00E1ng '+str(THANG[ld.month-1])+' '+str(ld.year)+'\n'      # solar month
     for wd in weekday:
         #print(wd, end='\t')
         s += str(wd)+'\t'
@@ -197,7 +200,7 @@ from tkinter import Tk, Text
 
 def tk_show(s, title="Month calendar"):
     root = Tk()
-    root.geometry("460x140")
+    root.geometry("600x140")
     root.resizable(False, False)
     root.title(title)
     text = Text(root, height=8)
@@ -255,7 +258,7 @@ def getYearCode(yyyy):
     if debug: print(hex(yearCode))
     return yearCode
 
-def getYearInfo(yyyy):
+def getYearInfo(yyyy):  # same as decodeLunarYear(yy, k) using only year variable
     return decodeLunarYear(yyyy, getYearCode(yyyy));  
 
 def getLunarDate(dd, mm, yyyy):

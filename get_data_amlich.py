@@ -62,5 +62,5 @@ for p in ['00','20','40','60','80']:
 tab += r + '</table>'
 #print(tab)
 
-with open(century+'00-99.html','w') as f:
+with open('/home/pi/Desktop/'+century+'00-99.html','w') as f:
     f.write(tab)

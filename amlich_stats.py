@@ -3,7 +3,7 @@
 
 import pandas as pd
 
-df = pd.read_csv('1800-99.csv')
+df = pd.read_csv('/home/pi/Desktop/amlich/1800-99.csv')
 #df.fillna('', inplace=True)
 
 # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html

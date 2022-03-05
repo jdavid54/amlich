@@ -206,6 +206,6 @@ if __name__ == '__main__':
     test(year)
     decade(year)
     #lunar_year(year)
-    print(CAN_P,CHI_P)
-    print(CAN_N, CHI_N)
+    print('Can&chi duong',CAN_P,CHI_P)
+    print('Can&chi am',CAN_N, CHI_N)
     canchi_element(year)
