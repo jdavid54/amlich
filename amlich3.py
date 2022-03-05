@@ -171,4 +171,7 @@ today_info()
 # ========================create html page on desktop (big, normal or small)
 setOutputSize('small')
 res = printYear(2021, 4)   # 6 months by row
-write2file('/home/pi/Desktop/year.html', res)
+
+with open('c:/users/jean/documents/year.html','wb') as f:
+    f.write(res.encode('utf-8'))
+
