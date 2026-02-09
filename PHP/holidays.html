@@ -1,0 +1,25 @@
+<script src="amlich-hnd.js"></script>
+<script src="amlich2.js"></script>
+<div id="calendarTitle"></div>
+<div id="buttons">
+<table width="100%">
+<tr><td><form method="post" action="#" onsubmit="generate_table(); return false;">
+  <b>
+    Chọn năm bắt đầu : &nbsp;
+    <input id="startYear" name="yy" size="4" value="2021"> &nbsp;
+    <input type="submit" value="OK"> &nbsp;&nbsp;
+  </b>
+</form></td>
+<td>
+<button onclick="exportToICalendar(parseInt(document.getElementById('startYear').value))">
+Xuất bảng này ra theo định dạng iCalendar<br>
+(để nhập vào Outlook, Google Calendar v.v.)
+</button></td>
+<table>
+</div>
+
+<div id="holidayTable"></div>
+
+<script>
+generate_table();
+</script>
