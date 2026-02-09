@@ -11,7 +11,7 @@ The lunar yera may contains 12 or 13 months.
 
 The leap month is a month (between 2 new moons) that does not contains a principal solar major term.
 
-![Principal terms](Tiết_Khí.svg "source:wikipedia")
+![Principal terms](Tiết_Khí.jpg "source:wikipedia")
 
 Solar terms 24 positions of the sun on the ecliptic every 15°. Major terms are positions muliple of 30° (Dong Chi, Dai Han, Vu Thuy, ..).
 
